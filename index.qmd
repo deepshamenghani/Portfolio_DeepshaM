@@ -1,0 +1,87 @@
+---
+title: "Deepsha Menghani"
+subtitle: "Sr. Data Scientist @ Microsoft"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+
+
+::: panel-tabset
+# Home
+
+<br>
+
+## Deepsha Menghani
+
+::: columns
+::: {.column width="65%"}
+I have been a Data Scientist at Microsoft for 3 years. I have an extensive background working with varied data sets and using advanced analytics to enable stakeholders to make informed decisions.
+
+I recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using reticulate, and data visualizations using animation and interactivity. I love learning new things constantly and sharing my knowledge with others in a digestible manner.
+:::
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="25%"}
+![](linkedinpic.jpg)
+:::
+:::
+
+# Resume
+
+::: callout-tip
+You can use your mouse to scroll through or download the pdf. You can also zoom in for readability.
+:::
+
+<iframe width="800" height="800" src="Menghani_Deepsha_Resume.pdf">
+
+</iframe>
+
+# Blogs
+
+<br> <br>
+
+## Data visualizations - Animation and Interactivity
+
+::: columns
+::: {.column width="55%"}
+Animation brings in a key component of analysis where the third parameter you want to animate is not directly visible in your plot. Sometimes it can tell a powerful story and sometimes it can just add some flair to an otherwise low-key story.
+
+This blog goes through examples and code to show how easy it is to use gganimate and plotly packages to animate your data visualizations and make them interactive.... [Continue reading](https://deepshamenghani.github.io/gganimate_and_plotly/)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](usa_population_map_animated.gif)
+:::
+:::
+
+<br> <br>
+
+## Moving from interesting to actionable analysis
+
+::: columns
+::: {.column width="40%"}
+![](clusters.png)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+No actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let's name this folder "the analysis morgue." It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone.
+
+But there are ways to avoid it.... [Continue reading](https://medium.com/p/5d62c929a36c)
+:::
+:::
+:::

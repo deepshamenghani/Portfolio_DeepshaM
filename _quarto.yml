@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Portfolio"
+  navbar:
+    right:
+      - about.qmd
+      - icon: twitter
+        href: https://twitter.com/bigdatadipper
+      - icon: linkedin
+        href: https://linkedin.com/in/deepshamenghani
+      - icon: github
+        href: https://github.com/deepshamenghani
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
