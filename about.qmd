@@ -15,4 +15,4 @@ about:
       href: https://github.com/deepshamenghani
 ---
 
-This portfolio blog was created using Quarto and deployed with Github Pages.  You can find the code used to create this blog at my portfolio [git repo](https://github.com/deepshamenghani/Portfolio_DeepshaM).
+This portfolio blog was created using Quarto and deployed with Quarto Publish. You can find the code used to create this blog at my portfolio [git repo](https://github.com/deepshamenghani/Portfolio_DeepshaM).
