@@ -11,7 +11,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "This portfolio blog was created using Quarto and deployed with Github actions. You can find the code used to create this blog at my portfolio github repo."
+    "text": "This portfolio blog was created using Quarto and deployed with Github Pages. You can find the code used to create this blog at my portfolio git repo."
   },
   {
     "objectID": "posts/post-with-code/index.html",
