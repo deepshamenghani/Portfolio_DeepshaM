@@ -25,7 +25,9 @@ title-block-banner: true
 ::: {.column width="65%"}
 I have been a Data Scientist at Microsoft for 3 years. I have an extensive background working with varied data sets and using advanced analytics to enable stakeholders to make informed decisions.
 
-I recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using reticulate, and data visualizations using animation and interactivity. I love learning new things constantly and sharing my knowledge with others in a digestible manner.
+I recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using reticulate, and data visualizations using animation and interactivity. I love learning new things constantly and sharing my knowledge with others in a digestible manner.   
+
+I am very passionate about Diversity, Equity and Inclusion and lead actionable initiatives and conversations to drive inclusiveness within our organization.
 :::
 
 ::: {.column width="10%"}
@@ -36,9 +38,9 @@ I recently expanded my skill set to include topics like Quarto, tidymodels, work
 :::
 ::: 
 
-<br><br><br><br>
+<br>
 
-_This portfolio blog was created using Quarto and deployed with Quarto Publish. You can find the code used to create this blog at my [portfolio git repo](https://github.com/deepshamenghani/Portfolio_DeepshaM)._   
+
 
 # Resume
 

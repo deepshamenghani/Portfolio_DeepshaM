@@ -1,26 +1,26 @@
 {
-    "id": "3E1A1B82",
+    "id": "96D6375B",
     "path": "~/GitHub/Portfolio_DeepshaM/index.qmd",
     "project_path": "index.qmd",
     "type": "quarto_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1664650776696.0,
+    "created": 1664839066008.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "57,16",
-        "scrollLine": "53"
+        "cursorPosition": "53,0",
+        "scrollLine": "40"
     },
     "folds": "",
-    "lastKnownWriteTime": 1664838953,
+    "lastKnownWriteTime": 1664840183,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1664838953449,
+    "last_content_update": 1664840183062,
     "read_only": false,
     "read_only_alternatives": []
 }
