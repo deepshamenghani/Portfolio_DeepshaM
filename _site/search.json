@@ -1,16 +1,44 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "Testing!"
+  },
+  {
+    "objectID": "index.html#deepsha-menghani",
+    "href": "index.html#deepsha-menghani",
+    "title": "Deepsha Menghani",
+    "section": "Deepsha Menghani",
+    "text": "Deepsha Menghani\n\n\nI have been a Data Scientist at Microsoft for 3 years. I have an extensive background working with varied data sets and using advanced analytics to enable stakeholders to make informed decisions.\nI recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using reticulate, and data visualizations using animation and interactivity. I love learning new things constantly and sharing my knowledge with others in a digestible manner.\nI am very passionate about Diversity, Equity and Inclusion and lead actionable initiatives and conversations to drive inclusiveness within our organization."
+  },
+  {
+    "objectID": "index.html#quarto-blog---data-visualizations---animation-and-interactivity",
+    "href": "index.html#quarto-blog---data-visualizations---animation-and-interactivity",
+    "title": "Deepsha Menghani",
+    "section": "Quarto blog - Data visualizations - Animation and Interactivity",
+    "text": "Quarto blog - Data visualizations - Animation and Interactivity\n\n\nAnimation brings in a key component of analysis where the third parameter you want to animate is not directly visible in your plot. Sometimes it can tell a powerful story and sometimes it can just add some flair to an otherwise low-key story.\nThis blog goes through examples and code to show how easy it is to use gganimate and plotly packages to animate your data visualizations and make them interactive…. Continue reading"
+  },
+  {
+    "objectID": "index.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
+    "href": "index.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
+    "title": "Deepsha Menghani",
+    "section": "Shiny Flex Dashboard - Sales forecasting and anomaly detection",
+    "text": "Shiny Flex Dashboard - Sales forecasting and anomaly detection\n\n\n\n\n\n\nThis dashboard, built with Shiny Flex capability, looks at data from EverythingYouWillNeed.com website (fake data) to report out odaily product sales. You can select the product, the dates to analyze and click on apply to replicate the report, check sales forecast and anomalies for the specific product choice.\nGiving your stakeholders the ability to play with product grain forecast and anomaly detection is a great was to get them on-board prior to deploying any model at scale. This Shiny dashboard was built specifically for that purpose…. Link to play with the Shiny dashboard"
+  },
+  {
+    "objectID": "index.html#medium-blog---moving-from-interesting-to-actionable-analysis",
+    "href": "index.html#medium-blog---moving-from-interesting-to-actionable-analysis",
+    "title": "Deepsha Menghani",
+    "section": "Medium blog - Moving from interesting to actionable analysis",
+    "text": "Medium blog - Moving from interesting to actionable analysis\n\n\nNo actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let’s name this folder “the analysis morgue.” It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone.\nBut there are ways to avoid it…. Continue reading"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "This portfolio blog was created using Quarto and deployed with Quarto Publish. You can find the code used to create this blog at my portfolio git repo."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Deepsha Menghani",
-    "section": "",
-    "text": "No matching items"
   }
 ]
