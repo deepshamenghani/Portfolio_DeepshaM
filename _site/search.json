@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "Quarto code to reproduce this portfolio website - Portfolio git repo\nPrimary github account\nRepos to content within “Blogs and Dashboards tab:\n\nQuarto blog - Data visualizations - Animation and Interactivity\nShiny Flex Dashboard - Sales forecasting and anomaly detection\n\nMedium blog - Moving from interesting to actionable analysis"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "I am a Sr. Data Scientist at Microsoft. I have extensive background working with varied data sets and using advanced analytics to enable business stakeholders to make informed decisions.\nI recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using Reticulate, and data visualizations using animation and interactivity. I am passionate about Diversity, Equity and Inclusion and lead actionable initiatives and conversations to drive inclusiveness within our organization."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "Animation brings in a key component of analysis where the third parameter you want to animate is not directly visible in your plot. Sometimes it can tell a powerful story and sometimes it can just add some flair to an otherwise low-key story.\nThis blog goes through examples and code to show how easy it is to use gganimate and plotly packages to animate your data visualizations and make them interactive…. Continue reading"
+  },
+  {
+    "objectID": "projects.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
+    "href": "projects.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
+    "title": "Deepsha Menghani",
+    "section": "Shiny Flex Dashboard - Sales forecasting and anomaly detection",
+    "text": "Shiny Flex Dashboard - Sales forecasting and anomaly detection\n\n\n\n\n\n\nThis dashboard, built with Shiny Flex capability, looks at data from EverythingYouWillNeed.com website (fake data) to report out odaily product sales. You can select the product, the dates to analyze and click on apply to replicate the report, check sales forecast and anomalies for the specific product choice.\nGiving your stakeholders the ability to play with product grain forecast and anomaly detection is a great was to get them on-board prior to deploying any model at scale. This Shiny dashboard was built specifically for that purpose…. Link to play with the Shiny dashboard"
+  },
+  {
+    "objectID": "projects.html#medium-blog---moving-from-interesting-to-actionable-analysis",
+    "href": "projects.html#medium-blog---moving-from-interesting-to-actionable-analysis",
+    "title": "Deepsha Menghani",
+    "section": "Medium blog - Moving from interesting to actionable analysis",
+    "text": "Medium blog - Moving from interesting to actionable analysis\n\n\nNo actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let’s name this folder “the analysis morgue.” It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone.\nBut there are ways to avoid it…. Continue reading"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html",
+    "href": "tidytuesday/gganimate/index.html",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "",
+    "text": "In this post, I will create a racing bar chart using ggplot2 for the most popular names in the last decade.\nThe data comes from the “Babynames” package by Hadley Wickham."
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#load-libraries",
+    "href": "tidytuesday/gganimate/index.html#load-libraries",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "1 Load libraries",
+    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(babynames)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\n\n# Interactive visualization\nlibrary(gganimate)"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#load-data",
+    "href": "tidytuesday/gganimate/index.html#load-data",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "2 Load data",
+    "text": "2 Load data\nI am using the “babynames” dataset from the “Babynames” package.\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   <dbl> <chr> <chr>     <int>  <dbl>\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# … with 1,924,655 more rows\n\n\n\ndatatable(babynames %>% \n  head())"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#clean-and-rank-the-data",
+    "href": "tidytuesday/gganimate/index.html#clean-and-rank-the-data",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "3 Clean and rank the data",
+    "text": "3 Clean and rank the data\n\nranked_by_year <- babynames %>% \n  mutate(prop = round(prop*100, 2)) %>% \n  select(sex, year, name, var = prop) %>% \n  group_by(sex, year) %>% \n  arrange(year, -var) %>% \n  mutate(rank = 1:n()) %>% \n  filter(rank <= 10)"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#function-to-filter-the-data",
+    "href": "tidytuesday/gganimate/index.html#function-to-filter-the-data",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "4 Function to filter the data",
+    "text": "4 Function to filter the data\n\ndata_filter <- function(ranked_by_year, sex_filter = \"M\", year_min = 1998) {\n  ranked_by_year %>% \n    filter(sex == sex_filter,\n           year >= year_min)\n}"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#function-to-create-the-ggplot-for-filtered-variables",
+    "href": "tidytuesday/gganimate/index.html#function-to-create-the-ggplot-for-filtered-variables",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "5 Function to create the ggplot for filtered variables",
+    "text": "5 Function to create the ggplot for filtered variables\n\nplot_rect_function <- function(data, title_text) {\n  data %>% \n    ggplot() +\n    aes(xmin = 0,\n        xmax = var) +\n    aes(ymin = rank - 0.5,\n        ymax = rank + 0.5,\n        y = rank) +\n    theme_minimal() +\n    facet_wrap(~ year) +\n    geom_rect(alpha = 0.3, color = \"black\") +\n    aes(fill = name) +\n    scale_x_continuous(\n      limits = c(-2, 1.4)\n    ) +\n    geom_label(col = \"gray12\",\n              hjust = \"right\",\n              aes(label = name, fill = name),\n              x = -0.2) +\n    scale_y_reverse() +\n    labs(fill = NULL) +\n    labs(title = title_text,\n         y = \"\",\n         x = \"Percentage of names\") +\n    facet_null() +\n    scale_x_continuous(\n      limits =c(-0.7, 2)\n    ) +\n    geom_text(x = 1.6 , y = -10,\n              family = \"Times\",\n              aes(label = as.character(year)),\n              size = 20, col = \"grey18\") +\n    aes(group = name) +\n    theme(legend.position = \"none\",\n          axis.text.y = element_blank()) \n}"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#create-plots-for-filtered-male-and-female-names",
+    "href": "tidytuesday/gganimate/index.html#create-plots-for-filtered-male-and-female-names",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "6 Create plots for filtered Male and Female names",
+    "text": "6 Create plots for filtered Male and Female names\n\nplot_rect_M <- ranked_by_year %>% \n  data_filter(\"M\", 1998) %>% \n  plot_rect_function(title_text = \"Most popular male baby names between 1998-2017\")\n\nplot_rect_F <- ranked_by_year %>% \n  data_filter(\"F\", 1998) %>% \n  plot_rect_function(title_text = \"Most popular female baby names between 1998-2017\")"
+  },
+  {
+    "objectID": "tidytuesday/gganimate/index.html#animate-with-gganimate-over-time",
+    "href": "tidytuesday/gganimate/index.html#animate-with-gganimate-over-time",
+    "title": "Animated visualization of popular names using GGAnimate",
+    "section": "7 Animate with GGAnimate over time",
+    "text": "7 Animate with GGAnimate over time\nWhile the above plot looks extremely scrambled, applying gganimate and looking at it over time will clean it up.\n\n7.1 Male names between 1998 and 2017\nThe name “Jacob” went from rank 1 to rank 10 by 2017 but stayed on the charts throughout!\n\nnames_prop_animated_M <- plot_rect_M  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_M, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Male.gif\")\n\n\n\n\n\n\n7.2 Female names between 1998 and 2017\nThe name “Emily” went from rank 1 to not surviving the top 10 chart by 2017.\n\nnames_prop_animated_F <- plot_rect_F  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_F, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Female.gif\")"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html",
+    "href": "tidytuesday/plotly/index.html",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "",
+    "text": "In this post, I will analyse the #TidyTuesday dataset about Retail Sales in the US across all States between 2019 and 2022.\nThe data comes from the United States Census Bureau’s Monthly State Retail Sales. The Monthly State Retail Sales (MSRS) is the Census Bureau’s new experimental data product featuring modeled state-level retail sales. You can find the dataset on Tidy Tuesday here."
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#load-libraries",
+    "href": "tidytuesday/plotly/index.html#load-libraries",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "1 Load libraries",
+    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\n\n# Interactive visualization\nlibrary(plotly)\nlibrary(crosstalk)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#load-data",
+    "href": "tidytuesday/plotly/index.html#load-data",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "2 Load data",
+    "text": "2 Load data\n\n# Get the Data\n\n# Read in with tidytuesdayR package \n# Install from CRAN via: install.packages(\"tidytuesdayR\")\n\nstate_retail <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = \"cciciiccc\")\ncoverage_codes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')\n\n\ndatatable(state_retail %>% filter(state_abbr == \"WA\") %>% \n  select(state_abbr, year, month, subsector, change_yoy))"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
+    "href": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "3 Impute and clean the data for Washington",
+    "text": "3 Impute and clean the data for Washington\nAfter filtering data for Washington, I use the tidyr fill function to impute missing data within each subsector with the next complete value. While there are many ways of imputing the data, I chose this method to indicate that change is more likely to be tending towards the next available value of change.\nYou may choose not to impute the data as well or use other methods like average.\n\nstate_data_imputed <-  state_retail %>% \n  filter(state_abbr == 'WA') %>%\n  arrange(subsector) %>% \n  select(state_abbr, year, month, subsector, change_yoy) %>% \n  mutate(change_yoy = as.numeric(change_yoy %>% str_remove('S'))) %>% \n  group_by(subsector) %>% \n  fill(change_yoy, .direction = \"up\") %>% #Replace missing data with next good value within the group\n  ungroup() %>% \n  mutate(date = ifelse(month < 10, paste0(year,'-0',month, '-01'), paste0(year,'-',month, '-01'))) %>% # Create a readable date column\n  select(state_abbr, subsector, date, change_yoy)\n\ndatatable(state_data_imputed)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
+    "href": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "4 Plot using “Plotly” to have date range interactivity",
+    "text": "4 Plot using “Plotly” to have date range interactivity\nI use Plotly here to add the interactivity of zooming to a certain time range.\n\nstate_data_imputed %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T),\n                      zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750, height = 450)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
+    "href": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
+    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "section": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing",
+    "text": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing\nAs there are so many retail sectors, Crosstalk allows me to add a component where I can highlight one or more sectors making it easier to compare.\n\n## Create a crosstalk component\nsector_data <- SharedData$new(state_data_imputed, key = ~subsector, group = \"Select a Retail Sector\")\n\n# Plot similar to the previous plotly function but add a highlight command\nsector_data %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T))) %>%\n  layout(\n         xaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750) %>%\n  highlight(selectize = TRUE, persistent = TRUE) # This adds the selectize option to easily input sector\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository here. Follow me on medium and linkedIn to stay tuned for my next article."
+  },
+  {
+    "objectID": "tidytuesday.html",
+    "href": "tidytuesday.html",
+    "title": "Tidy Tuesday visualizations",
+    "section": "",
+    "text": "#TidyTuesday is a weekly data project aimed at the R ecosystem. This project was borne out of the R4DS Online Learning Community and the R for Data Science textbook. Emphasis is placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome.\nWhile I regularly participate in weekly Tidy Tuesday, these posts highlight my favorite submissions and the corresponding code.\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository for Tidy Tuesday submissions here.\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nAnimated visualization of popular names using GGAnimate\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\ngganimate\n\n\n\n\n\n\n\n\n\n\n\nJan 3, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nRetail Sales data analysis with interactive plots using Plotly\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nDeepsha Menghani\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "waresume.html",
+    "href": "waresume.html",
+    "title": "Wednesday Addams",
+    "section": "",
+    "text": "Note\n\n\n\nAs a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam’s resume here."
+  },
+  {
+    "objectID": "waresume.html#sr.-data-journalist-nevermore-2022---present",
+    "href": "waresume.html#sr.-data-journalist-nevermore-2022---present",
+    "title": "Wednesday Addams",
+    "section": "Sr. Data Journalist, Nevermore (2022 - present)",
+    "text": "Sr. Data Journalist, Nevermore (2022 - present)\n\nIndependently analyzed student journeys among peers to create a classification model for identifying sketchy monster\nOptimized data gathering and research based on new and evolving constraints by the school principal and sheriff\nSuspected every stakeholder I came in contact with following “Trust but verify” data philosophy\nDeveloped AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy \nSuccessfully led a team of trusting peers multiple times to face dangers risen from bad data collection\nExpertly coded in multiple languages like Latin and German\nDeveloped algorithms using Natural Language Processing and\nDeep Learning models to communicate with dead and alive stakeholders"
+  }
+]

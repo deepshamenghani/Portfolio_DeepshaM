@@ -1,0 +1,9 @@
+# Resume
+
+::: callout-tip
+You can use your mouse to scroll through or download the pdf. You can also zoom in for readability.
+:::
+
+<iframe width="1050" height="800" src="Menghani_Deepsha_Resume.pdf">
+
+</iframe>

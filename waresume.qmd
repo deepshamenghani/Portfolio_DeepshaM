@@ -1,0 +1,105 @@
+---
+title: "Wednesday Addams"
+subtitle: "Data Science resume built with R Quarto markdown"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  eval = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+```
+
+::: callout-note
+As a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam's resume [here](https://github.com/deepshamenghani/Wednesday_Addams_resume_quarto/).
+:::
+
+
+# Education 
+
+Nevermore Academy, Jericho - present
+
+<hr>
+
+```{r}
+#| column: screen
+
+library(tidyverse)
+library(gtrendsR)
+library(showtext)
+library(ggthemes)
+library(cowplot)
+library(magick)
+library(ggimage)
+theme_set(theme_cowplot())
+
+font_add(family = "BloodyTerror-GOW9Z.ttf", regular = "BloodyTerror-GOW9Z.ttf")
+showtext_auto()
+
+# wednesday_search<-gtrendsR::gtrends(
+#   keyword= c("Wednesday Addams"),
+#   time = "today 1-m"
+# )
+# 
+# wednesday_hits <- wednesday_search$interest_over_time %>% 
+#   mutate(date=as.Date(date),
+#          hits = replace_na(as.numeric(hits),0))
+# 
+# writexl::write_xlsx(wednesday_hits, "wednesday_hits.xlsx")
+
+wednesday_hits <- readxl::read_xlsx("wednesday_hits.xlsx")
+
+wednesday_chart <- wednesday_hits %>% 
+  ggplot(aes(x = date, y = hits)) +
+  geom_area(color = "red", alpha = 1, size = 1)  + 
+  theme_minimal() +
+  theme(text = element_text(family = "BloodyTerror-GOW9Z.ttf")) +
+  labs(x = "", 
+       y = "",
+       title = "Google hits over time!!!") +
+  theme(title = element_text(color = "gray4", size = 40))  
+
+wednesdayadams2 <- image_read2("WA_screenshot_serious.png")
+
+ggdraw() +
+  draw_plot(wednesday_chart) +
+  draw_image(wednesdayadams2, x = 0.9, y = 0.9, hjust = 1, vjust = 1, width = 0.13, height = 0.4) 
+
+```
+
+
+# Experience
+
+## Sr. Data Journalist, Nevermore (2022 - present)
+
+-   Independently analyzed student journeys among peers to create a classification model for identifying sketchy monster
+-   Optimized data gathering and research based on new and evolving constraints by the school principal and sheriff
+-   Suspected every stakeholder I came in contact with following "Trust but verify" data philosophy
+-   Developed AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy 
+-   Successfully led a team of trusting peers multiple times to face dangers risen from bad data collection
+-   Expertly coded in multiple languages like Latin and German
+-   Developed algorithms using Natural Language Processing and\
+    Deep Learning models to communicate with dead and alive stakeholders
+
+
+# Hobbies
+
+-   Dancing like nobody is watching
+-   Being cold and distant in an adorable way
+-   Not hugging
+
+<br>
+
+![Screenshot from Netflix](WA_screenshot_smile.png)
+
+# About this resume
+-   Created by [Deepsha Menghani](https://deepshamenghani.quarto.pub/dmenghani/)
+-   Packages used: Quarto, Tidyverse, gtrendsR, showtext, ggthemes, cowplot, magick, ggimage
+
+
+
+
+
