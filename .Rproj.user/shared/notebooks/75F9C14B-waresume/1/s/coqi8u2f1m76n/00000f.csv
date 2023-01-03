@@ -1,0 +1,5 @@
+"0","font_add(family = ""BloodyTerror-GOW9Z.ttf"", regular = ""BloodyTerror-GOW9Z.ttf"")
+"
+"2","Error in font_add(family = ""BloodyTerror-GOW9Z.ttf"", regular = ""BloodyTerror-GOW9Z.ttf"") : 
+  could not find function ""font_add""
+"

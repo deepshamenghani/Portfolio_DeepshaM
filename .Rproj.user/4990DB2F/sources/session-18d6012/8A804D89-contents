@@ -1,0 +1,182 @@
+---
+title: "Animated visualization of popular names using GGAnimate"
+author: "Deepsha Menghani"
+date: 1/3/2023
+author:
+  - name: Deepsha Menghani 
+    url: https://github.com/deepshamenghani
+title-block-banner: true
+format:
+  html:
+    theme: flatly
+    code-fold: false
+    code-tools: true
+    toc: false
+    number-sections: true
+link-citations: yes
+categories: [code, analysis, visualization, gganimate]
+image: "20230103.gif"
+---
+
+In this post, I will create a racing bar chart using ggplot2 for the most popular names in the last decade.
+
+The data comes from the "Babynames" package by Hadley Wickham.
+
+::: callout-tip
+You can find my github code repository [here](https://github.com/deepshamenghani/tidytuesday/tree/master/2023/Week1_BYOD).
+:::
+
+## Load libraries
+
+```{r install packages, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE, eval=TRUE}
+
+# For loading Tidy Tuesday data
+library(babynames)
+
+# EDA
+library(tidyverse)
+library(DT)
+
+# Interactive visualization
+library(gganimate)
+
+```
+
+## Load data
+
+I am using the "babynames" dataset from the "Babynames" package.
+
+```{r echo=TRUE}
+babynames
+
+```
+
+```{r echo=TRUE}
+datatable(babynames %>% 
+  head())
+```
+
+## Clean and rank the data
+
+```{r}
+ranked_by_year <- babynames %>% 
+  mutate(prop = round(prop*100, 2)) %>% 
+  select(sex, year, name, var = prop) %>% 
+  group_by(sex, year) %>% 
+  arrange(year, -var) %>% 
+  mutate(rank = 1:n()) %>% 
+  filter(rank <= 10)
+```
+
+## Function to filter the data
+
+```{r}
+
+data_filter <- function(ranked_by_year, sex_filter = "M", year_min = 1998) {
+  ranked_by_year %>% 
+    filter(sex == sex_filter,
+           year >= year_min)
+}
+ 
+```
+
+## Function to create the ggplot for filtered variables
+
+```{r}
+
+plot_rect_function <- function(data, title_text) {
+  data %>% 
+    ggplot() +
+    aes(xmin = 0,
+        xmax = var) +
+    aes(ymin = rank - 0.5,
+        ymax = rank + 0.5,
+        y = rank) +
+    theme_minimal() +
+    facet_wrap(~ year) +
+    geom_rect(alpha = 0.3, color = "black") +
+    aes(fill = name) +
+    scale_x_continuous(
+      limits = c(-2, 1.4)
+    ) +
+    geom_label(col = "gray12",
+              hjust = "right",
+              aes(label = name, fill = name),
+              x = -0.2) +
+    scale_y_reverse() +
+    labs(fill = NULL) +
+    labs(title = title_text,
+         y = "",
+         x = "Percentage of names") +
+    facet_null() +
+    scale_x_continuous(
+      limits =c(-0.7, 2)
+    ) +
+    geom_text(x = 1.6 , y = -10,
+              family = "Times",
+              aes(label = as.character(year)),
+              size = 20, col = "grey18") +
+    aes(group = name) +
+    theme(legend.position = "none",
+          axis.text.y = element_blank()) 
+}
+  
+
+```
+
+## Create plots for filtered Male and Female names
+
+```{r message=FALSE, warning=FALSE}
+plot_rect_M <- ranked_by_year %>% 
+  data_filter("M", 1998) %>% 
+  plot_rect_function(title_text = "Most popular male baby names between 1998-2017")
+
+plot_rect_F <- ranked_by_year %>% 
+  data_filter("F", 1998) %>% 
+  plot_rect_function(title_text = "Most popular female baby names between 1998-2017")
+
+```
+
+## Animate with GGAnimate over time
+
+While the above plot looks extremely scrambled, applying gganimate and looking at it over time will clean it up.
+
+### Male names between 1998 and 2017
+
+The name "Jacob" went from rank 1 to rank 10 by 2017 but stayed on the charts throughout!
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+
+names_prop_animated_M <- plot_rect_M  +
+  gganimate::transition_time(year)
+
+animate(names_prop_animated_M, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)
+
+anim_save(file = "popular_names_Male.gif")
+
+```
+
+```{r echo=FALSE, eval=TRUE}
+
+```
+
+
+### Female names between 1998 and 2017
+
+The name "Emily" went from rank 1 to not surviving the top 10 chart by 2017.
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=FALSE}
+
+names_prop_animated_F <- plot_rect_F  +
+  gganimate::transition_time(year)
+
+animate(names_prop_animated_F, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)
+
+anim_save(file = "popular_names_Female.gif")
+
+
+```
+
+
+```{r echo=FALSE, eval=TRUE}
+```

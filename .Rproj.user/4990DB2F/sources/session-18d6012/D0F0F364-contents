@@ -1,0 +1,153 @@
+---
+title: "Retail Sales data analysis with interactive plots using Plotly"
+date: 12/13/2022 
+author:
+  - name: Deepsha Menghani 
+    url: https://github.com/deepshamenghani
+title-block-banner: true
+format:
+  html:
+    theme: flatly
+    code-fold: false
+    code-tools: true
+    toc: false
+    number-sections: true
+link-citations: yes
+categories: [code, analysis, visualization, plotly]
+image: "Plotly_retail_sales_monthlychange.gif"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
+```
+
+In this post, I will analyse the [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/) dataset about Retail Sales in the US across all States between 2019 and 2022.
+
+The data comes from the United States Census Bureau's Monthly State Retail Sales. The Monthly State Retail Sales (MSRS) is the Census Bureau's new experimental data product featuring modeled state-level retail sales. You can find the dataset on Tidy Tuesday [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-12-13).
+
+::: callout-tip
+You can find my github code repository [here](https://github.com/deepshamenghani/tidytuesday/tree/master/2022/Week_50_RetailSales).
+:::
+
+## Load libraries
+
+```{r install packages, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE, eval=TRUE}
+
+# For loading Tidy Tuesday data
+library(tidytuesdayR)
+
+# EDA
+library(tidyverse)
+library(DT)
+
+# Interactive visualization
+library(plotly)
+library(crosstalk)
+
+```
+
+## Load data
+
+```{r echo=TRUE}
+# Get the Data
+
+# Read in with tidytuesdayR package 
+# Install from CRAN via: install.packages("tidytuesdayR")
+
+state_retail <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = "cciciiccc")
+coverage_codes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')
+```
+
+```{r echo=TRUE}
+datatable(state_retail %>% filter(state_abbr == "WA") %>% 
+  select(state_abbr, year, month, subsector, change_yoy))
+
+```
+
+## Impute and clean the data for Washington
+
+After filtering data for Washington, I use the tidyr fill function to impute missing data within each subsector with the next complete value. While there are many ways of imputing the data, I chose this method to indicate that change is more likely to be tending towards the next available value of change.
+
+You may choose not to impute the data as well or use other methods like average.
+
+```{r}
+state_data_imputed <-  state_retail %>% 
+  filter(state_abbr == 'WA') %>%
+  arrange(subsector) %>% 
+  select(state_abbr, year, month, subsector, change_yoy) %>% 
+  mutate(change_yoy = as.numeric(change_yoy %>% str_remove('S'))) %>% 
+  group_by(subsector) %>% 
+  fill(change_yoy, .direction = "up") %>% #Replace missing data with next good value within the group
+  ungroup() %>% 
+  mutate(date = ifelse(month < 10, paste0(year,'-0',month, '-01'), paste0(year,'-',month, '-01'))) %>% # Create a readable date column
+  select(state_abbr, subsector, date, change_yoy)
+
+datatable(state_data_imputed)
+
+```
+
+## Plot using "Plotly" to have date range interactivity
+
+I use [Plotly](https://cran.r-project.org/web/packages/plotly/index.html) here to add the interactivity of zooming to a certain time range.
+
+```{r}
+state_data_imputed %>% 
+  plot_ly( type = 'scatter', mode = 'lines') %>%
+  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,
+    hoverinfo = "text", text = ~paste0(subsector,"\n",date,"\n",change_yoy)) %>%
+  layout(showlegend = F, title='Washington Retail Sales delta YoY',
+         xaxis = list(rangeslider = list(visible = T),
+                      zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff',
+                      title = ''),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff',
+                      title = 'Change YoY',
+                      range=list(-150, 500)),
+         plot_bgcolor='#e5ecf6', width = 750, height = 450)
+
+
+```
+
+## Use "Crosstalk" with Plotly to enable selecting, highlighting and focusing
+
+As there are so many retail sectors, [Crosstalk](https://cran.r-project.org/web/packages/crosstalk/index.html) allows me to add a component where I can highlight one or more sectors making it easier to compare.
+
+```{r}
+
+## Create a crosstalk component
+sector_data <- SharedData$new(state_data_imputed, key = ~subsector, group = "Select a Retail Sector")
+
+# Plot similar to the previous plotly function but add a highlight command
+sector_data %>% 
+  plot_ly( type = 'scatter', mode = 'lines') %>%
+  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,
+    hoverinfo = "text", text = ~paste0(subsector,"\n",date,"\n",change_yoy)) %>%
+  layout(showlegend = F, title='Washington Retail Sales delta YoY',
+         xaxis = list(rangeslider = list(visible = T))) %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff',
+                      title = ''),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff',
+                      title = 'Change YoY',
+                      range=list(-150, 500)),
+         plot_bgcolor='#e5ecf6', width = 750) %>%
+  highlight(selectize = TRUE, persistent = TRUE) # This adds the selectize option to easily input sector
+
+```
+
+::: callout-tip
+You can find my github code repository [here](https://github.com/deepshamenghani/tidytuesday/tree/master/2022/Week_50_RetailSales). Follow me on [medium](https://medium.com/@menghani.deepsha) and [linkedIn](www.linkedin.com/in/deepshamenghani) to stay tuned for my next article.
+:::

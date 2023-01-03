@@ -1,0 +1,16 @@
+{
+  "hash": "0e83288b790ce9608ace570255fc5c29",
+  "result": {
+    "markdown": "---\ntitle: \"Wednesday Addams\"\nsubtitle: \"Data Science resume built with R Quarto markdown\"\n---\n\n\n\n\n::: callout-note\nAs a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam's resume [here](https://github.com/deepshamenghani/Wednesday_Addams_resume_quarto/).\n:::\n\n\n# Education \n\nNevermore Academy, Jericho - present\n\n<hr>\n\n\n::: {.cell .column-screen layout-align=\"center\"}\n::: {.cell-output-display}\n![](waresume_files/figure-html/unnamed-chunk-1-1.png){fig-align='center' width=672}\n:::\n:::\n\n\n\n# Experience\n\n## Sr. Data Journalist, Nevermore (2022 - present)\n\n-   Independently analyzed student journeys among peers to create a classification model for identifying sketchy monster\n-   Optimized data gathering and research based on new and evolving constraints by the school principal and sheriff\n-   Suspected every stakeholder I came in contact with following \"Trust but verify\" data philosophy\n-   Developed AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy \n-   Successfully led a team of trusting peers multiple times to face dangers risen from bad data collection\n-   Expertly coded in multiple languages like Latin and German\n-   Developed algorithms using Natural Language Processing and\\\n    Deep Learning models to communicate with dead and alive stakeholders\n\n\n# Hobbies\n\n-   Dancing like nobody is watching\n-   Being cold and distant in an adorable way\n-   Not hugging\n\n<br>\n\n![Screenshot from Netflix](WA_screenshot_smile.png)\n\n# About this resume\n-   Created by [Deepsha Menghani](https://deepshamenghani.quarto.pub/dmenghani/)\n-   Packages used: Quarto, Tidyverse, gtrendsR, showtext, ggthemes, cowplot, magick, ggimage\n\n\n\n\n\n",
+    "supporting": [
+      "waresume_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

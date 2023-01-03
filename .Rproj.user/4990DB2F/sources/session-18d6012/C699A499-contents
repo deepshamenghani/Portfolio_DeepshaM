@@ -1,0 +1,55 @@
+project:
+  type: website
+
+website:
+  title: "Deepsha Menghani"
+  
+  favicon: "images/linkedinpic.jpg"
+  
+  page-footer:
+    center: |
+      <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com)</strong></span>
+    left: |
+      <span class="container"><strong>Made with [Quarto](https://quarto.org/)</strong></span>
+    right: |
+      <span class="container"><strong>[Github Code Repo](https://github.com/deepshamenghani)</strong></span>
+    background: "#2780e3"
+    
+  navbar:
+  
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: tidytuesday.qmd
+        text: TidyTuesday
+      - href: resume.qmd
+        text: Resume
+      - href: waresume.qmd
+        text: Wednesday Addam's resume
+        
+    right:
+      - icon: mastodon
+        href: https://fosstodon.org/@deepsha
+      - icon: twitter
+        href: https://twitter.com/bigdatadipper
+      - icon: linkedin
+        href: www.linkedin.com/in/deepshamenghani
+      - icon: github
+        href: https://github.com/deepshamenghani/
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: [cosmo, theme_dark_custom.scss]
+    css: styles.css
+    citations-hover: true
+    code-link: true
+    code-fold: show
+    code-tools: false
+    code-block-border-left: "#31BAE9"
+    
+editor: visual
+
