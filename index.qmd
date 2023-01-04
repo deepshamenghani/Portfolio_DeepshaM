@@ -21,7 +21,6 @@ about:
     - icon: envelope
       text: Contact me
       href: mailto:menghani.deepsha@gmail.com
-page-layout: full
 ---
 
 I am a Sr. Data Scientist at Microsoft. I have extensive background working with varied data sets and using advanced analytics to enable business stakeholders to make informed decisions.
