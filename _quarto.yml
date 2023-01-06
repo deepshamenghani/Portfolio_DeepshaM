@@ -11,8 +11,6 @@ website:
       <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com)</strong></span>
     left: |
       <span class="container"><strong>Made with [Posit Quarto](https://quarto.org/)</strong></span>
-    right: |
-      <span class="container"><strong>[Github Code Repo for this website](https://github.com/deepshamenghani/Portfolio_DeepshaM)</strong></span>
     background: "#2780e3"
     
   navbar:
