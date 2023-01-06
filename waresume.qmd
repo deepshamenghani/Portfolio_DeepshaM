@@ -81,8 +81,7 @@ ggdraw() +
 -   Developed AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy 
 -   Successfully led a team of trusting peers multiple times to face dangers risen from bad data collection
 -   Expertly coded in multiple languages like Latin and German
--   Developed algorithms using Natural Language Processing and\
-    Deep Learning models to communicate with dead and alive stakeholders
+-   Developed algorithms using Natural Language Processing and Deep Learning models to communicate with dead and alive stakeholders
 
 
 # Hobbies

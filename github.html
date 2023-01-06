@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deepsha Menghani - Tidy Tuesday visualizations</title>
+<title>Deepsha Menghani – github</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/linkedinpic.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -63,42 +61,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -123,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./tidytuesday.html" aria-current="page">
+    <a class="nav-link" href="./tidytuesday.html">
  <span class="menu-text">TidyTuesday</span></a>
   </li>  
   <li class="nav-item">
@@ -147,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./www.linkedin.com/in/deepshamenghani"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/deepshamenghani"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -166,148 +134,30 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Tidy Tuesday visualizations</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(2)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(2)</span></div><div class="category" data-category="gganimate">gganimate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="plotly">plotly <span class="quarto-category-count">(1)</span></div><div class="category" data-category="visualization">visualization <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
-
-<p><a href="https://github.com/rfordatascience/tidytuesday/tree/master/">#TidyTuesday</a> is a weekly data project aimed at the R ecosystem. This project was borne out of the R4DS Online Learning Community and the R for Data Science textbook. Emphasis is placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome.</p>
-<p>While I regularly participate in weekly Tidy Tuesday, these posts highlight my favorite submissions and the corresponding code.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can find my github code repository for Tidy Tuesday submissions <a href="https://github.com/deepshamenghani/tidytuesday/">here</a>.</p>
-</div>
-</div>
+<ul>
+<li>Quarto code to reproduce this portfolio website - <a href="https://github.com/deepshamenghani/Portfolio_DeepshaM" target="_blank">Portfolio git repo</a></li>
+<li><a href="https://github.com/deepshamenghani" target="_blank">Primary github account</a></li>
+<li>Repos to content within “Blogs and Dashboards tab:
+<ul>
+<li><a href="https://github.com/deepshamenghani/gganimate_and_plotly" target="_blank">Quarto blog - Data visualizations - Animation and Interactivity</a></li>
+<li><a href="https://github.com/deepshamenghani/ShinyFlex_AnomaliesAndForecast" target="_blank">Shiny Flex Dashboard - Sales forecasting and anomaly detection</a><br>
+</li>
+<li><a href="https://medium.com/data-science-at-microsoft/moving-from-interesting-to-actionable-analysis-5d62c929a36c" target="_blank">Medium blog - Moving from interesting to actionable analysis</a></li>
+</ul></li>
+</ul>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="code,analysis,visualization,gganimate" data-listing-date-sort="1672732800000" data-listing-file-modified-sort="1672796827236" data-listing-reading-time-sort="3.3">
-<div class="thumbnail">
-<p><a href="./tidytuesday/gganimate/index.html"> <img src="./tidytuesday/gganimate/popular_names_Male.gif" class="thumnail-image" style="height: 10em;"> </a></p>
-</div>
-<div class="body">
-<a href="./tidytuesday/gganimate/index.html">
-<h3 class="no-anchor listing-title">
-Animated visualization of popular names using GGAnimate
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('visualization'); return false;">
-visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('gganimate'); return false;">
-gganimate
-</div>
-</div>
-<a href="./tidytuesday/gganimate/index.html">
-<div class="listing-description">
-In this post, I will create a racing bar chart using ggplot2 for the most popular names in the last decade.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./tidytuesday/gganimate/index.html">
-<div class="listing-date">
-Jan 3, 2023
-</div>
-<div class="listing-author">
-Deepsha Menghani
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="code,analysis,visualization,plotly" data-listing-date-sort="1670918400000" data-listing-file-modified-sort="1672787623209" data-listing-reading-time-sort="4.79">
-<div class="thumbnail">
-<p><a href="./tidytuesday/plotly/index.html"> <img src="./tidytuesday/plotly/Plotly_retail_sales_monthlychange.gif" class="thumnail-image" style="height: 10em;"> </a></p>
-</div>
-<div class="body">
-<a href="./tidytuesday/plotly/index.html">
-<h3 class="no-anchor listing-title">
-Retail Sales data analysis with interactive plots using Plotly
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('visualization'); return false;">
-visualization
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('plotly'); return false;">
-plotly
-</div>
-</div>
-<a href="./tidytuesday/plotly/index.html">
-<div class="listing-description">
-In this post, I will analyse the #TidyTuesday dataset about Retail Sales in the US across all States between 2019 and 2022.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./tidytuesday/plotly/index.html">
-<div class="listing-date">
-Dec 13, 2022
-</div>
-<div class="listing-author">
-Deepsha Menghani
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

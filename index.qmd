@@ -14,7 +14,7 @@ about:
       href: https://twitter.com/bigdatadipper
     - icon: linkedin
       text: LinkedIn
-      href: www.linkedin.com/in/deepshamenghani
+      href: https://linkedin.com/in/deepshamenghani
     - icon: github
       text: Github
       href: https://github.com/deepshamenghani/

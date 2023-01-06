@@ -172,5 +172,4 @@ anim_save(file = "popular_names_Female.gif")
 
 ```
 
-
 ![](popular_names_Female.gif)
