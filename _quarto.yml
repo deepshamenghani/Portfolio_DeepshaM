@@ -14,7 +14,7 @@ website:
     background: "#01796F"
     
   navbar:
-  
+    
     left:
       - href: index.qmd
         text: Home
