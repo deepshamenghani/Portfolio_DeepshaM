@@ -93,42 +93,42 @@
   {
     "objectID": "tidytuesday/plotly/index.html",
     "href": "tidytuesday/plotly/index.html",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "",
     "text": "In this post, I will analyse the #TidyTuesday dataset about Retail Sales in the US across all States between 2019 and 2022.\nThe data comes from the United States Census Bureau’s Monthly State Retail Sales. The Monthly State Retail Sales (MSRS) is the Census Bureau’s new experimental data product featuring modeled state-level retail sales. You can find the dataset on Tidy Tuesday here."
   },
   {
     "objectID": "tidytuesday/plotly/index.html#load-libraries",
     "href": "tidytuesday/plotly/index.html#load-libraries",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "1 Load libraries",
     "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\n\n# Interactive visualization\nlibrary(plotly)\nlibrary(crosstalk)"
   },
   {
     "objectID": "tidytuesday/plotly/index.html#load-data",
     "href": "tidytuesday/plotly/index.html#load-data",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "2 Load data",
     "text": "2 Load data\n\n# Get the Data\n\n# Read in with tidytuesdayR package \n# Install from CRAN via: install.packages(\"tidytuesdayR\")\n\nstate_retail <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = \"cciciiccc\")\ncoverage_codes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')\n\n\ndatatable(state_retail %>% filter(state_abbr == \"WA\") %>% \n  select(state_abbr, year, month, subsector, change_yoy))"
   },
   {
     "objectID": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
     "href": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "3 Impute and clean the data for Washington",
     "text": "3 Impute and clean the data for Washington\nAfter filtering data for Washington, I use the tidyr fill function to impute missing data within each subsector with the next complete value. While there are many ways of imputing the data, I chose this method to indicate that change is more likely to be tending towards the next available value of change.\nYou may choose not to impute the data as well or use other methods like average.\n\nstate_data_imputed <-  state_retail %>% \n  filter(state_abbr == 'WA') %>%\n  arrange(subsector) %>% \n  select(state_abbr, year, month, subsector, change_yoy) %>% \n  mutate(change_yoy = as.numeric(change_yoy %>% str_remove('S'))) %>% \n  group_by(subsector) %>% \n  fill(change_yoy, .direction = \"up\") %>% #Replace missing data with next good value within the group\n  ungroup() %>% \n  mutate(date = ifelse(month < 10, paste0(year,'-0',month, '-01'), paste0(year,'-',month, '-01'))) %>% # Create a readable date column\n  select(state_abbr, subsector, date, change_yoy)\n\ndatatable(state_data_imputed)"
   },
   {
     "objectID": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
     "href": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "4 Plot using “Plotly” to have date range interactivity",
     "text": "4 Plot using “Plotly” to have date range interactivity\nI use Plotly here to add the interactivity of zooming to a certain time range.\n\nstate_data_imputed %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T),\n                      zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750, height = 450)"
   },
   {
     "objectID": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
     "href": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
-    "title": "TidyTuesday: Retail Sales data analysis with Plotly in R",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
     "section": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing",
     "text": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing\nAs there are so many retail sectors, Crosstalk allows me to add a component where I can highlight one or more sectors making it easier to compare.\n\n## Create a crosstalk component\nsector_data <- SharedData$new(state_data_imputed, key = ~subsector, group = \"Select a Retail Sector\")\n\n# Plot similar to the previous plotly function but add a highlight command\nsector_data %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T))) %>%\n  layout(\n         xaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750) %>%\n  highlight(selectize = TRUE, persistent = TRUE) # This adds the selectize option to easily input sector\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository here. Follow me on medium and linkedIn to stay tuned for my next article."
   },

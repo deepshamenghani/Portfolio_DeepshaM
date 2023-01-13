@@ -11,7 +11,7 @@ website:
       <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com)</strong></span>
     left: |
       <span class="container"><strong>Made with [Posit Quarto](https://quarto.org/)</strong></span>
-    background: "#01796F"
+    background: "#388087"
     
   navbar:
     
@@ -40,6 +40,10 @@ website:
       - icon: github
         href: https://github.com/deepshamenghani/
         aria-label: Quarto Github
+        
+  search: 
+    location: navbar
+    type: overlay
 
 format:
   html:
@@ -51,7 +55,9 @@ format:
     code-link: true
     code-fold: show
     code-tools: false
-    code-block-border-left: "#01796F"
+    code-block-border-left: "#388087"
+    
+
     
 editor: visual
 
