@@ -11,7 +11,7 @@ website:
       <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com)</strong></span>
     left: |
       <span class="container"><strong>Made with [Posit Quarto](https://quarto.org/)</strong></span>
-    background: "#388087"
+    background: "#004E4F"
     
   navbar:
     
@@ -55,7 +55,7 @@ format:
     code-link: true
     code-fold: show
     code-tools: false
-    code-block-border-left: "#388087"
+    code-block-border-left: "#004E4F"
     
 
     
