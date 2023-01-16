@@ -2,6 +2,7 @@
   {
     "listing": "/tidytuesday.html",
     "items": [
+      "/tidytuesday/Birdfeeder/index.html",
       "/tidytuesday/gganimate/index.html",
       "/tidytuesday/plotly/index.html"
     ]

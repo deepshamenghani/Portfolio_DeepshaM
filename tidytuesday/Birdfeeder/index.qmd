@@ -1,0 +1,129 @@
+---
+title: "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R"
+date: 1/10/2023
+author:
+  - name: Deepsha Menghani 
+    url: https://github.com/deepshamenghani
+title-block-banner: true
+format:
+  html:
+    theme: flatly
+    code-fold: false
+    code-tools: true
+    toc: false
+    number-sections: true
+link-citations: yes
+categories: [code, spatial, visualization, plotly]
+image: "birdsightings_daejun.png"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.height = 7
+)
+```
+
+In this post, I will analyse the [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/) FeederWatch dataset about 30 Years of Standardized Bird Counts at Supplementary Feeding Stations in North America.
+
+[FeederWatch](https://www.frontiersin.org/articles/10.3389/fevo.2021.619682/full) is a place-based citizen science program that asks participants to identify and count the birds that visit the area around their home, particularly focused around supplementary feeding stations (i.e., bird feeders).
+
+::: callout-tip
+You can find my github code repository [here](https://github.com/deepshamenghani/tidytuesday/tree/master/2023/Week2_birdfeeder).
+:::
+
+## Load libraries
+
+```{r install packages, message=FALSE, warning=FALSE, include=TRUE, paged.print=FALSE, eval=TRUE, echo=TRUE}
+
+# For loading Tidy Tuesday data
+library(tidytuesdayR)
+
+# EDA
+library(tidyverse)
+library(DT)
+library(plotly)
+
+
+```
+
+## Load data
+
+```{r}
+birdfeeder_checklist_2021 <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv')
+
+```
+
+## Top sighted bird data
+
+```{r}
+top_sighted_bird <- birdfeeder_checklist_2021 %>% 
+  group_by(species_code) %>% 
+  summarise(total_sightings = sum(how_many, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  arrange(desc(total_sightings)) %>% 
+  head(1) %>%
+  pull(species_code)
+
+```
+
+```{r}
+birdfeeder_US_top <- birdfeeder_checklist_2021 %>% 
+  filter(subnational1_code  %>% str_detect("US-")) %>% 
+  mutate(state_code = subnational1_code %>% str_remove("US-")) %>% 
+  select(latitude, longitude, state_code, species_code) %>% 
+  filter(species_code %in% top_sighted_bird)
+    
+```
+
+## Plot using Plotly
+
+```{r}
+
+bird_plot <- plot_geo(birdfeeder_US_top,
+         lat = ~latitude,
+         lon = ~longitude,
+         # color = ~state_code,
+         marker = list(
+           size = 3, 
+           opacity = 0.3,
+           color = "yellow"
+         ),
+         showlegend = FALSE
+) %>% 
+  add_trace(text = ~state_code,
+            hoverinfo = 'text') %>% 
+  layout(geo = list(
+    scope = 'usa'
+    , showland = TRUE
+    , showsubunits = FALSE
+    , landcolor = ('black')), 
+    title = list(text = str_glue("Bird sightings across the US for {top_sighted_bird} \n Nov, 2020 to Apr, 2021"), y = 0.95, x = 0.5, xanchor = 'center', yanchor =  'top'),
+    subtitle = "dd",
+    font = list(size = 13, color = "purple")
+  ) %>% 
+  style(hoverlabel = list(font = list(size=20))) %>% 
+  # config(displayModeBar = FALSE) %>%
+  # add_annotations(x = 0.75, y=0.66, text = str_glue("Highest sightings\nPA"), ax = 5, ay = -80, font = list(size = 14)) %>% 
+  add_annotations(
+    showarrow = F,
+    x = 0.1,
+    y=0.08,
+    text = str_glue("Data source: FeederWatch"),
+    font = list(color = '#949494',
+                size = 14)
+  ) %>% 
+  add_annotations(
+    showarrow = F,
+    x = 0.1,
+    y=0.005,
+    text = str_glue("FeederWatch is a place-based citizen science program that asks participants \nto identify and count the birds that visit the area around their home.    "),
+    font = list(color = '#949494',
+                size = 12)
+  )
+
+bird_plot
+```

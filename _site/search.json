@@ -35,6 +35,41 @@
     "text": "Medium blog - Moving from interesting to actionable analysis\n\n\nNo actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let’s name this folder “the analysis morgue.” It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone.\nBut there are ways to avoid it…. Continue reading"
   },
   {
+    "objectID": "tidytuesday/Birdfeeder/index.html",
+    "href": "tidytuesday/Birdfeeder/index.html",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "",
+    "text": "In this post, I will analyse the #TidyTuesday FeederWatch dataset about 30 Years of Standardized Bird Counts at Supplementary Feeding Stations in North America.\nFeederWatch is a place-based citizen science program that asks participants to identify and count the birds that visit the area around their home, particularly focused around supplementary feeding stations (i.e., bird feeders)."
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#load-libraries",
+    "href": "tidytuesday/Birdfeeder/index.html#load-libraries",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "1 Load libraries",
+    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\nlibrary(plotly)"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#load-data",
+    "href": "tidytuesday/Birdfeeder/index.html#load-data",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "2 Load data",
+    "text": "2 Load data\n\nbirdfeeder_checklist_2021 <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv')"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
+    "href": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "3 Top sighted bird data",
+    "text": "3 Top sighted bird data\n\ntop_sighted_bird <- birdfeeder_checklist_2021 %>% \n  group_by(species_code) %>% \n  summarise(total_sightings = sum(how_many, na.rm = TRUE)) %>% \n  ungroup() %>% \n  arrange(desc(total_sightings)) %>% \n  head(1) %>%\n  pull(species_code)\n\n\nbirdfeeder_US_top <- birdfeeder_checklist_2021 %>% \n  filter(subnational1_code  %>% str_detect(\"US-\")) %>% \n  mutate(state_code = subnational1_code %>% str_remove(\"US-\")) %>% \n  select(latitude, longitude, state_code, species_code) %>% \n  filter(species_code %in% top_sighted_bird)"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
+    "href": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "4 Plot using Plotly",
+    "text": "4 Plot using Plotly\n\nbird_plot <- plot_geo(birdfeeder_US_top,\n         lat = ~latitude,\n         lon = ~longitude,\n         # color = ~state_code,\n         marker = list(\n           size = 3, \n           opacity = 0.3,\n           color = \"yellow\"\n         ),\n         showlegend = FALSE\n) %>% \n  add_trace(text = ~state_code,\n            hoverinfo = 'text') %>% \n  layout(geo = list(\n    scope = 'usa'\n    , showland = TRUE\n    , showsubunits = FALSE\n    , landcolor = ('black')), \n    title = list(text = str_glue(\"Bird sightings across the US for {top_sighted_bird} \\n Nov, 2020 to Apr, 2021\"), y = 0.95, x = 0.5, xanchor = 'center', yanchor =  'top'),\n    subtitle = \"dd\",\n    font = list(size = 13, color = \"purple\")\n  ) %>% \n  style(hoverlabel = list(font = list(size=20))) %>% \n  # config(displayModeBar = FALSE) %>%\n  # add_annotations(x = 0.75, y=0.66, text = str_glue(\"Highest sightings\\nPA\"), ax = 5, ay = -80, font = list(size = 14)) %>% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.08,\n    text = str_glue(\"Data source: FeederWatch\"),\n    font = list(color = '#949494',\n                size = 14)\n  ) %>% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.005,\n    text = str_glue(\"FeederWatch is a place-based citizen science program that asks participants \\nto identify and count the birds that visit the area around their home.    \"),\n    font = list(color = '#949494',\n                size = 12)\n  )\n\nbird_plot"
+  },
+  {
     "objectID": "tidytuesday/gganimate/index.html",
     "href": "tidytuesday/gganimate/index.html",
     "title": "Animated visualization of popular names using GGAnimate",
@@ -137,7 +172,7 @@
     "href": "tidytuesday.html",
     "title": "Tidy Tuesday visualizations",
     "section": "",
-    "text": "#TidyTuesday is a weekly data project aimed at the R ecosystem. This project was borne out of the R4DS Online Learning Community and the R for Data Science textbook. Emphasis is placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome.\nWhile I regularly participate in weekly Tidy Tuesday, these posts highlight my favorite submissions and the corresponding code.\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository for Tidy Tuesday submissions here.\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nAnimated visualization of popular names using GGAnimate\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\ngganimate\n\n\n\n\n\n\n\n\n\n\n\nJan 3, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nRetail Sales data analysis with interactive plots using Plotly\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nDeepsha Menghani\n\n\n\n\n\n\nNo matching items"
+    "text": "#TidyTuesday is a weekly data project aimed at the R ecosystem. This project was borne out of the R4DS Online Learning Community and the R for Data Science textbook. Emphasis is placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome.\nWhile I regularly participate in weekly Tidy Tuesday, these posts highlight my favorite submissions and the corresponding code.\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository for Tidy Tuesday submissions here.\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday: Analyzing FeederWatch dataset with Plotly in R\n\n\n\n\n\n\n\ncode\n\n\nspatial\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nAnimated visualization of popular names using GGAnimate\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\ngganimate\n\n\n\n\n\n\n\n\n\n\n\nJan 3, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nRetail Sales data analysis with interactive plots using Plotly\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nDeepsha Menghani\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "waresume.html",
