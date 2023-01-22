@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Deepsha Menghani">
 <meta name="dcterms.date" content="2023-01-03">
-
 <title>Deepsha Menghani - Animated visualization of popular names using GGAnimate</title>
 <style>
 code{white-space: pre-wrap;}
@@ -87,7 +84,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -106,8 +102,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -125,28 +120,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-<script src="../../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="../../site_libs/datatables-binding-0.25/datatables.js"></script>
-<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="../../site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+}</script><script src="../../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="../../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="../../site_libs/datatables-binding-0.25/datatables.js"></script><script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../../site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../../site_libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="../../site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+<script src="../../site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link rel="stylesheet" href="../../styles.css">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Deepsha Menghani</span>
@@ -157,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -178,8 +161,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">Wednesday Addam’s resume</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://fosstodon.org/@deepsha"><i class="bi bi-mastodon" role="img" aria-label="Quarto Mastodon">
 </i> 
  <span class="menu-text"></span></a>
@@ -200,17 +183,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
+<div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Animated visualization of popular names using GGAnimate</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -248,12 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<p>In this post, I will create a racing bar chart using ggplot2 for the most popular names in the last decade.</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p>In this post, I will create a racing bar chart using ggplot2 for the most popular names in the last decade.</p>
 <p>The data comes from the “Babynames” package by Hadley Wickham.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -268,25 +242,24 @@ Tip
 <p>You can find my github code repository <a href="https://github.com/deepshamenghani/tidytuesday/tree/master/2023/Week1_BYOD">here</a>.</p>
 </div>
 </div>
-<section id="load-libraries" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="load-libraries"><span class="header-section-number">1</span> Load libraries</h2>
+<section id="load-libraries" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="load-libraries">
+<span class="header-section-number">1</span> Load libraries</h2>
 <div class="cell" data-paged.print="false">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For loading Tidy Tuesday data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># EDA</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive visualization</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># For loading Tidy Tuesday data</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># EDA</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT">DT</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Interactive visualization</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="load-data" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">2</span> Load data</h2>
+</section><section id="load-data" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="load-data">
+<span class="header-section-number">2</span> Load data</h2>
 <p>I am using the “babynames” dataset from the “Babynames” package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>babynames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,924,665 × 5
     year sex   name          n   prop
@@ -305,127 +278,117 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(babynames <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span><span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div id="htmlwidget-aec4ef7f9ac70f83acfc" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-aec4ef7f9ac70f83acfc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],[1880,1880,1880,1880,1880,1880],["F","F","F","F","F","F"],["Mary","Anna","Emma","Elizabeth","Minnie","Margaret"],[7065,2604,2003,1939,1746,1578],[0.07238359,0.02667896,0.02052149,0.01986579,0.01788843,0.0161672]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>sex<\/th>\n      <th>name<\/th>\n      <th>n<\/th>\n      <th>prop<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-</section>
-<section id="clean-and-rank-the-data" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="clean-and-rank-the-data"><span class="header-section-number">3</span> Clean and rank the data</h2>
+</section><section id="clean-and-rank-the-data" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="clean-and-rank-the-data">
+<span class="header-section-number">3</span> Clean and rank the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ranked_by_year <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="fu">round</span>(prop<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sex, year, name, <span class="at">var =</span> prop) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex, year) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, <span class="sc">-</span>var) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ranked_by_year</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">prop</span><span class="op">*</span><span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sex</span>, <span class="va">year</span>, <span class="va">name</span>, var <span class="op">=</span> <span class="va">prop</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span>, <span class="op">-</span><span class="va">var</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rank <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rank</span> <span class="op">&lt;=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="function-to-filter-the-data" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="function-to-filter-the-data"><span class="header-section-number">4</span> Function to filter the data</h2>
+</section><section id="function-to-filter-the-data" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="function-to-filter-the-data">
+<span class="header-section-number">4</span> Function to filter the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_filter <span class="ot">&lt;-</span> <span class="cf">function</span>(ranked_by_year, <span class="at">sex_filter =</span> <span class="st">"M"</span>, <span class="at">year_min =</span> <span class="dv">1998</span>) {</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  ranked_by_year <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sex <span class="sc">==</span> sex_filter,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           year <span class="sc">&gt;=</span> year_min)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_filter</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">ranked_by_year</span>, <span class="va">sex_filter</span> <span class="op">=</span> <span class="st">"M"</span>, <span class="va">year_min</span> <span class="op">=</span> <span class="fl">1998</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ranked_by_year</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="va">sex_filter</span>,</span>
+<span>           <span class="va">year</span> <span class="op">&gt;=</span> <span class="va">year_min</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="function-to-create-the-ggplot-for-filtered-variables" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="function-to-create-the-ggplot-for-filtered-variables"><span class="header-section-number">5</span> Function to create the ggplot for filtered variables</h2>
+</section><section id="function-to-create-the-ggplot-for-filtered-variables" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="function-to-create-the-ggplot-for-filtered-variables">
+<span class="header-section-number">5</span> Function to create the ggplot for filtered variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_rect_function <span class="ot">&lt;-</span> <span class="cf">function</span>(data, title_text) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">0</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmax =</span> var) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> rank <span class="sc">-</span> <span class="fl">0.5</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymax =</span> rank <span class="sc">+</span> <span class="fl">0.5</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> rank) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> year) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_rect</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> name) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="fl">1.4</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="at">col =</span> <span class="st">"gray12"</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">hjust =</span> <span class="st">"right"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> name, <span class="at">fill =</span> name),</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">x =</span> <span class="sc">-</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title_text,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Percentage of names"</span>) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_null</span>() <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.7</span>, <span class="dv">2</span>)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">x =</span> <span class="fl">1.6</span> , <span class="at">y =</span> <span class="sc">-</span><span class="dv">10</span>,</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">"Times"</span>,</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">as.character</span>(year)),</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">20</span>, <span class="at">col =</span> <span class="st">"grey18"</span>) <span class="sc">+</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">group =</span> name) <span class="sc">+</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>()) </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">plot_rect_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">title_text</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xmin <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        xmax <span class="op">=</span> <span class="va">var</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">rank</span> <span class="op">-</span> <span class="fl">0.5</span>,</span>
+<span>        ymax <span class="op">=</span> <span class="va">rank</span> <span class="op">+</span> <span class="fl">0.5</span>,</span>
+<span>        y <span class="op">=</span> <span class="va">rank</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">year</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.3</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>      limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">1.4</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"gray12"</span>,</span>
+<span>              hjust <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">name</span>, fill <span class="op">=</span> <span class="va">name</span><span class="op">)</span>,</span>
+<span>              x <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">title_text</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">""</span>,</span>
+<span>         x <span class="op">=</span> <span class="st">"Percentage of names"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_null.html">facet_null</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>      limits <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.7</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1.6</span> , y <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>,</span>
+<span>              family <span class="op">=</span> <span class="st">"Times"</span>,</span>
+<span>              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              size <span class="op">=</span> <span class="fl">20</span>, col <span class="op">=</span> <span class="st">"grey18"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">name</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>          axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="create-plots-for-filtered-male-and-female-names" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="create-plots-for-filtered-male-and-female-names"><span class="header-section-number">6</span> Create plots for filtered Male and Female names</h2>
+</section><section id="create-plots-for-filtered-male-and-female-names" class="level2" data-number="6"><h2 data-number="6" class="anchored" data-anchor-id="create-plots-for-filtered-male-and-female-names">
+<span class="header-section-number">6</span> Create plots for filtered Male and Female names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_rect_M <span class="ot">&lt;-</span> ranked_by_year <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_filter</span>(<span class="st">"M"</span>, <span class="dv">1998</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_rect_function</span>(<span class="at">title_text =</span> <span class="st">"Most popular male baby names between 1998-2017"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>plot_rect_F <span class="ot">&lt;-</span> ranked_by_year <span class="sc">%&gt;%</span> </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_filter</span>(<span class="st">"F"</span>, <span class="dv">1998</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_rect_function</span>(<span class="at">title_text =</span> <span class="st">"Most popular female baby names between 1998-2017"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">plot_rect_M</span> <span class="op">&lt;-</span> <span class="va">ranked_by_year</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">data_filter</span><span class="op">(</span><span class="st">"M"</span>, <span class="fl">1998</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">plot_rect_function</span><span class="op">(</span>title_text <span class="op">=</span> <span class="st">"Most popular male baby names between 1998-2017"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plot_rect_F</span> <span class="op">&lt;-</span> <span class="va">ranked_by_year</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">data_filter</span><span class="op">(</span><span class="st">"F"</span>, <span class="fl">1998</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">plot_rect_function</span><span class="op">(</span>title_text <span class="op">=</span> <span class="st">"Most popular female baby names between 1998-2017"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="animate-with-gganimate-over-time" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="animate-with-gganimate-over-time"><span class="header-section-number">7</span> Animate with GGAnimate over time</h2>
+</section><section id="animate-with-gganimate-over-time" class="level2" data-number="7"><h2 data-number="7" class="anchored" data-anchor-id="animate-with-gganimate-over-time">
+<span class="header-section-number">7</span> Animate with GGAnimate over time</h2>
 <p>While the above plot looks extremely scrambled, applying gganimate and looking at it over time will clean it up.</p>
-<section id="male-names-between-1998-and-2017" class="level3" data-number="7.1">
-<h3 data-number="7.1" class="anchored" data-anchor-id="male-names-between-1998-and-2017"><span class="header-section-number">7.1</span> Male names between 1998 and 2017</h3>
+<section id="male-names-between-1998-and-2017" class="level3" data-number="7.1"><h3 data-number="7.1" class="anchored" data-anchor-id="male-names-between-1998-and-2017">
+<span class="header-section-number">7.1</span> Male names between 1998 and 2017</h3>
 <p>The name “Jacob” went from rank 1 to rank 10 by 2017 but stayed on the charts throughout!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>names_prop_animated_M <span class="ot">&lt;-</span> plot_rect_M  <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  gganimate<span class="sc">::</span><span class="fu">transition_time</span>(year)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(names_prop_animated_M, <span class="at">duration =</span><span class="dv">30</span>, <span class="at">fps =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="dv">900</span>, <span class="at">height =</span> <span class="dv">600</span>, <span class="at">renderer =</span> <span class="fu">gifski_renderer</span>(), <span class="at">end_pause =</span> <span class="dv">100</span>, <span class="at">start_pause =</span> <span class="dv">30</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">file =</span> <span class="st">"popular_names_Male.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">names_prop_animated_M</span> <span class="op">&lt;-</span> <span class="va">plot_rect_M</span>  <span class="op">+</span></span>
+<span>  <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/transition_time.html">transition_time</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://gganimate.com/reference/animate.html">animate</a></span><span class="op">(</span><span class="va">names_prop_animated_M</span>, duration <span class="op">=</span><span class="fl">30</span>, fps <span class="op">=</span> <span class="fl">10</span>, width <span class="op">=</span> <span class="fl">900</span>, height <span class="op">=</span> <span class="fl">600</span>, renderer <span class="op">=</span> <span class="fu"><a href="https://gganimate.com/reference/renderers.html">gifski_renderer</a></span><span class="op">(</span><span class="op">)</span>, end_pause <span class="op">=</span> <span class="fl">100</span>, start_pause <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://gganimate.com/reference/anim_save.html">anim_save</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"popular_names_Male.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="popular_names_Male.gif" class="img-fluid"></p>
-</section>
-<section id="female-names-between-1998-and-2017" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="female-names-between-1998-and-2017"><span class="header-section-number">7.2</span> Female names between 1998 and 2017</h3>
+</section><section id="female-names-between-1998-and-2017" class="level3" data-number="7.2"><h3 data-number="7.2" class="anchored" data-anchor-id="female-names-between-1998-and-2017">
+<span class="header-section-number">7.2</span> Female names between 1998 and 2017</h3>
 <p>The name “Emily” went from rank 1 to not surviving the top 10 chart by 2017.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>names_prop_animated_F <span class="ot">&lt;-</span> plot_rect_F  <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  gganimate<span class="sc">::</span><span class="fu">transition_time</span>(year)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(names_prop_animated_F, <span class="at">duration =</span><span class="dv">30</span>, <span class="at">fps =</span> <span class="dv">10</span>, <span class="at">width =</span> <span class="dv">900</span>, <span class="at">height =</span> <span class="dv">600</span>, <span class="at">renderer =</span> <span class="fu">gifski_renderer</span>(), <span class="at">end_pause =</span> <span class="dv">100</span>, <span class="at">start_pause =</span> <span class="dv">30</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">anim_save</span>(<span class="at">file =</span> <span class="st">"popular_names_Female.gif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">names_prop_animated_F</span> <span class="op">&lt;-</span> <span class="va">plot_rect_F</span>  <span class="op">+</span></span>
+<span>  <span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/transition_time.html">transition_time</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://gganimate.com/reference/animate.html">animate</a></span><span class="op">(</span><span class="va">names_prop_animated_F</span>, duration <span class="op">=</span><span class="fl">30</span>, fps <span class="op">=</span> <span class="fl">10</span>, width <span class="op">=</span> <span class="fl">900</span>, height <span class="op">=</span> <span class="fl">600</span>, renderer <span class="op">=</span> <span class="fu"><a href="https://gganimate.com/reference/renderers.html">gifski_renderer</a></span><span class="op">(</span><span class="op">)</span>, end_pause <span class="op">=</span> <span class="fl">100</span>, start_pause <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://gganimate.com/reference/anim_save.html">anim_save</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"popular_names_Female.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="popular_names_Female.gif" class="img-fluid"></p>
 
 
 <!-- -->
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -900,14 +863,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left"><span class="container"><strong>Made with <a href="https://quarto.org/">Posit Quarto</a></strong></span></div>   
-      <div class="nav-footer-center"><span class="container"><strong><a href="mailto:menghani.deepsha@gmail.com">Contact Deepsha Menghani</a></strong></span></div>
-    <div class="nav-footer-right"><span class="container"><strong><a href="https://github.com/deepshamenghani/Portfolio_DeepshaM">Github Repo</a></strong></span></div>
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left"><span class="container"><strong>Made with <a href="https://quarto.org/" target="_blank">Posit Quarto</a></strong></span></div>   
+      <div class="nav-footer-center"><span class="container"><strong><a href="mailto:menghani.deepsha@gmail.com" target="_blank">Contact Deepsha Menghani</a></strong></span></div>
+    <div class="nav-footer-right"><span class="container"><strong><a href="https://github.com/deepshamenghani/Portfolio_DeepshaM" target="_blank">Github Repo</a></strong></span></div>
   </div>
 </footer>
-
 
 
 </body></html>

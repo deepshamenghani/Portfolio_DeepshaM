@@ -8,11 +8,11 @@ website:
   
   page-footer:
     center: |
-      <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com)</strong></span>
+      <span class="container"><strong>[Contact Deepsha Menghani](mailto:menghani.deepsha@gmail.com){target="_blank"}</strong></span>
     left: |
-      <span class="container"><strong>Made with [Posit Quarto](https://quarto.org/)</strong></span>
+      <span class="container"><strong>Made with [Posit Quarto](https://quarto.org/){target="_blank"}</strong></span>
     right: |
-      <span class="container"><strong>[Github Repo](https://github.com/deepshamenghani/Portfolio_DeepshaM)</strong></span>
+      <span class="container"><strong>[Github Repo](https://github.com/deepshamenghani/Portfolio_DeepshaM){target="_blank"}</strong></span>
     background: "#004E4F"
     
   navbar:
