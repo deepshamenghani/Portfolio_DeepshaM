@@ -1,0 +1,50 @@
+::: columns
+::: {.column width="47%"}
+
+## Posit meetup: Create your Data Science portfolio with Quarto
+
+{{< video https://www.youtube.com/watch?v=xtSFXtDf4cM&t=4s
+    title="Create your Data Science portfolio with Quarto"
+    start="153"
+    aspect-ratio="21x9" 
+>}}
+
+Learn how you can easily create a Data Science Portfolio website and deploy it instantly with the help of Quarto. See how you can also easily maintain and update it whenever there are new projects that you want to showcase in your portfolio.
+:::
+
+::: {.column width="6%"}
+:::
+
+::: {.column width="47%"}
+
+## Appsilon Shiny conference: Sales Anomalies and Forecast Report
+
+{{< video https://www.youtube.com/watch?v=9LohaQ6npfc&t=1s
+    title="Create your Data Science portfolio with Quarto"
+    start="11"
+    aspect-ratio="21x9" 
+>}}
+
+This is an interactive R Shiny app that generates a report on sales data for a selected product including product sales over time, key performance indicators, forecasting, and anomaly detection. It was showcased in Appsilon Shiny Conference 2023 App Gallery.
+:::
+
+:::
+
+::: columns
+::: {.column width="47%"}
+[_Slides for the meetup_](https://deepshamenghani.quarto.pub/portfolio-with-quarto-workshop/#/title-slide) 
+
+[_Github code for slides_](https://github.com/deepshamenghani/Portfolio_with_Quarto_ppt)
+:::
+
+::: {.column width="6%"}
+:::
+
+::: {.column width="47%"}
+[_Shiny dashboard link_](https://hzon6a-deepsha-menghani.shinyapps.io/Sales_forecast_anomalies/)
+
+[_Github code_](https://github.com/deepshamenghani/ShinyFlex_AnomaliesAndForecast)
+:::
+:::
+
+<hr>

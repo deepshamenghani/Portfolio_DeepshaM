@@ -22,12 +22,14 @@ website:
         text: Home
       - href: projects.qmd
         text: Projects
+      - href: talks.qmd
+        text: Talks
       - href: tidytuesday.qmd
         text: TidyTuesday
       - href: resume.qmd
         text: Resume
-      - href: waresume.qmd
-        text: Wednesday Addam's resume
+      # - href: waresume.qmd
+      #   text: Wednesday Addam's resume
         
     right:
       - icon: mastodon

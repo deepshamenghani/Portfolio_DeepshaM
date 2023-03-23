@@ -18,21 +18,35 @@
     "href": "projects.html",
     "title": "Deepsha Menghani",
     "section": "",
-    "text": "Animation brings in a key component of analysis where the third parameter you want to animate is not directly visible in your plot. Sometimes it can tell a powerful story and sometimes it can just add some flair to an otherwise low-key story.\nThis blog goes through examples and code to show how easy it is to use gganimate and plotly packages to animate your data visualizations and make them interactive…. Continue reading"
+    "text": "The GBIF Data Explorer is a web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.\nThe app is built using the Shiny package for R. It includes several visualizations and filters created using the following packages: DT, shiny, shinyWidgets, shinythemes, shinyjs, bslib, bsicons, lubridate, leaflet, highcharter…. Check out the shiny dashboard"
   },
   {
-    "objectID": "projects.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
-    "href": "projects.html#shiny-flex-dashboard---sales-forecasting-and-anomaly-detection",
+    "objectID": "projects.html#collaborating-between-python-and-r-using-reticulate",
+    "href": "projects.html#collaborating-between-python-and-r-using-reticulate",
     "title": "Deepsha Menghani",
-    "section": "Shiny Flex Dashboard - Sales forecasting and anomaly detection",
-    "text": "Shiny Flex Dashboard - Sales forecasting and anomaly detection\n\n\n\n\n\n\nThis dashboard, built with Shiny Flex capability, looks at data from EverythingYouWillNeed.com website (fake data) to report out odaily product sales. You can select the product, the dates to analyze and click on apply to replicate the report, check sales forecast and anomalies for the specific product choice.\nGiving your stakeholders the ability to play with product grain forecast and anomaly detection is a great was to get them on-board prior to deploying any model at scale. This Shiny dashboard was built specifically for that purpose…. Link to play with the Shiny dashboard"
+    "section": "Collaborating between Python and R using Reticulate",
+    "text": "Collaborating between Python and R using Reticulate\n\n\n\n\n\n\nBoth R and Python are powerful data science languages and can be used to accomplish end-to-end analytics projects. Reticulate makes it easy to collaborate and talk between the two languages. I think of it as a translator on my fingertips.\nMy teammate and I participated in Microsoft hackathon where we accessed data from APIs using Python, pulled the output in R using Reticulate and created visualizations to derive business insights using Ggplot2… Check out how"
   },
   {
-    "objectID": "projects.html#medium-blog---moving-from-interesting-to-actionable-analysis",
-    "href": "projects.html#medium-blog---moving-from-interesting-to-actionable-analysis",
+    "objectID": "projects.html#data-visualizations---animation-and-interactivity-using-gganimate-and-plotly",
+    "href": "projects.html#data-visualizations---animation-and-interactivity-using-gganimate-and-plotly",
     "title": "Deepsha Menghani",
-    "section": "Medium blog - Moving from interesting to actionable analysis",
-    "text": "Medium blog - Moving from interesting to actionable analysis\n\n\nNo actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let’s name this folder “the analysis morgue.” It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone.\nBut there are ways to avoid it…. Continue reading"
+    "section": "Data visualizations - Animation and Interactivity using Gganimate and Plotly",
+    "text": "Data visualizations - Animation and Interactivity using Gganimate and Plotly\n\n\nAnimation brings in a key component of analysis where the third parameter you want to animate is not directly visible in your plot. Sometimes it can tell a powerful story and sometimes it can just add some flair to an otherwise low-key story.\nThis blog goes through examples and code to show how easy it is to use gganimate and plotly packages to animate your data visualizations and make them interactive…. Continue reading"
+  },
+  {
+    "objectID": "projects.html#sales-forecasting-and-anomaly-detection-shiny-dashboard",
+    "href": "projects.html#sales-forecasting-and-anomaly-detection-shiny-dashboard",
+    "title": "Deepsha Menghani",
+    "section": "Sales forecasting and anomaly detection Shiny dashboard",
+    "text": "Sales forecasting and anomaly detection Shiny dashboard\n\n\n\n\n\n\nThis dashboard, built with Shiny Flex capability, looks at data from EverythingYouWillNeed.com website (fake data) to report out odaily product sales. You can select the product, the dates to analyze and click on apply to replicate the report, check sales forecast and anomalies for the specific product choice.\nGiving your stakeholders the ability to play with product grain forecast and anomaly detection is a great was to get them on-board prior to deploying any model at scale. This Shiny dashboard was built specifically for that purpose…. Link to play with the Shiny dashboard"
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "Learn how you can easily create a Data Science Portfolio website and deploy it instantly with the help of Quarto. See how you can also easily maintain and update it whenever there are new projects that you want to showcase in your portfolio.\n\n\n\n\n\n\n\nThis is an interactive R Shiny app that generates a report on sales data for a selected product including product sales over time, key performance indicators, forecasting, and anomaly detection. It was showcased in Appsilon Shiny Conference 2023 App Gallery."
   },
   {
     "objectID": "tidytuesday/Birdfeeder/index.html",
