@@ -3,7 +3,7 @@ title: "Deepsha Menghani"
 image: images/linkedinpic.jpg
 about:
   template: jolla
-  image-width: 15em
+  image-width: 14em
   image-shape: round
   links:
     - icon: mastodon

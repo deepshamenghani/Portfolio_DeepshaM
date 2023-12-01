@@ -26,10 +26,10 @@ website:
         text: Talks
       - href: tidytuesday.qmd
         text: TidyTuesday
-      - href: resume.qmd
-        text: Resume
-      # - href: waresume.qmd
-      #   text: Wednesday Addam's resume
+      # - href: workshops.qmd
+      #   text: Workshops
+      # - href: blogs.qmd
+      #   text: Blogs
         
     right:
       - icon: mastodon
@@ -51,6 +51,10 @@ website:
 
 format:
   html:
+    grid: 
+      body-width: 2000px
+      sidebar-width: 200px
+      margin-width: 200px
     theme:
       light: [cosmo, theme_light_custom.scss]
       dark: [cosmo, theme_dark_custom.scss]

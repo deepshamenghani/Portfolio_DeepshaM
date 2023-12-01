@@ -1,10 +1,94 @@
 [
   {
-    "objectID": "github.html",
-    "href": "github.html",
-    "title": "Deepsha Menghani",
+    "objectID": "waresume.html",
+    "href": "waresume.html",
+    "title": "Wednesday Addams",
     "section": "",
-    "text": "Quarto code to reproduce this portfolio website - Portfolio git repo\nPrimary github account\nRepos to content within “Blogs and Dashboards tab:\n\nQuarto blog - Data visualizations - Animation and Interactivity\nShiny Flex Dashboard - Sales forecasting and anomaly detection\n\nMedium blog - Moving from interesting to actionable analysis"
+    "text": "Note\n\n\n\nAs a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam’s resume here."
+  },
+  {
+    "objectID": "waresume.html#sr.-data-journalist-nevermore-2022---present",
+    "href": "waresume.html#sr.-data-journalist-nevermore-2022---present",
+    "title": "Wednesday Addams",
+    "section": "Sr. Data Journalist, Nevermore (2022 - present)",
+    "text": "Sr. Data Journalist, Nevermore (2022 - present)\n\nIndependently analyzed student journeys among peers to create a classification model for identifying sketchy monster\nOptimized data gathering and research based on new and evolving constraints by the school principal and sheriff\nSuspected every stakeholder I came in contact with following “Trust but verify” data philosophy\nDeveloped AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy \nSuccessfully led a team of trusting peers multiple times to face dangers risen from bad data collection\nExpertly coded in multiple languages like Latin and German\nDeveloped algorithms using Natural Language Processing and Deep Learning models to communicate with dead and alive stakeholders"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html",
+    "href": "tidytuesday/plotly/index.html",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "",
+    "text": "In this post, I will analyse the #TidyTuesday dataset about Retail Sales in the US across all States between 2019 and 2022.\nThe data comes from the United States Census Bureau’s Monthly State Retail Sales. The Monthly State Retail Sales (MSRS) is the Census Bureau’s new experimental data product featuring modeled state-level retail sales. You can find the dataset on Tidy Tuesday here."
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#load-libraries",
+    "href": "tidytuesday/plotly/index.html#load-libraries",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "\n1 Load libraries",
+    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\n\n# Interactive visualization\nlibrary(plotly)\nlibrary(crosstalk)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#load-data",
+    "href": "tidytuesday/plotly/index.html#load-data",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "\n2 Load data",
+    "text": "2 Load data\n\n# Get the Data\n\n# Read in with tidytuesdayR package \n# Install from CRAN via: install.packages(\"tidytuesdayR\")\n\nstate_retail &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = \"cciciiccc\")\ncoverage_codes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')\n\n\ndatatable(state_retail %&gt;% filter(state_abbr == \"WA\") %&gt;% \n  select(state_abbr, year, month, subsector, change_yoy))"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
+    "href": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "\n3 Impute and clean the data for Washington",
+    "text": "3 Impute and clean the data for Washington\nAfter filtering data for Washington, I use the tidyr fill function to impute missing data within each subsector with the next complete value. While there are many ways of imputing the data, I chose this method to indicate that change is more likely to be tending towards the next available value of change.\nYou may choose not to impute the data as well or use other methods like average.\n\nstate_data_imputed &lt;-  state_retail %&gt;% \n  filter(state_abbr == 'WA') %&gt;%\n  arrange(subsector) %&gt;% \n  select(state_abbr, year, month, subsector, change_yoy) %&gt;% \n  mutate(change_yoy = as.numeric(change_yoy %&gt;% str_remove('S'))) %&gt;% \n  group_by(subsector) %&gt;% \n  fill(change_yoy, .direction = \"up\") %&gt;% #Replace missing data with next good value within the group\n  ungroup() %&gt;% \n  mutate(date = ifelse(month &lt; 10, paste0(year,'-0',month, '-01'), paste0(year,'-',month, '-01'))) %&gt;% # Create a readable date column\n  select(state_abbr, subsector, date, change_yoy)\n\ndatatable(state_data_imputed)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
+    "href": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "\n4 Plot using “Plotly” to have date range interactivity",
+    "text": "4 Plot using “Plotly” to have date range interactivity\nI use Plotly here to add the interactivity of zooming to a certain time range.\n\nstate_data_imputed %&gt;% \n  plot_ly( type = 'scatter', mode = 'lines') %&gt;%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %&gt;%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T),\n                      zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750, height = 450)"
+  },
+  {
+    "objectID": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
+    "href": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
+    "title": "Retail Sales data analysis with interactive plots using Plotly",
+    "section": "\n5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing",
+    "text": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing\nAs there are so many retail sectors, Crosstalk allows me to add a component where I can highlight one or more sectors making it easier to compare.\n\n## Create a crosstalk component\nsector_data &lt;- SharedData$new(state_data_imputed, key = ~subsector, group = \"Select a Retail Sector\")\n\n# Plot similar to the previous plotly function but add a highlight command\nsector_data %&gt;% \n  plot_ly( type = 'scatter', mode = 'lines') %&gt;%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %&gt;%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T))) %&gt;%\n  layout(\n         xaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750) %&gt;%\n  highlight(selectize = TRUE, persistent = TRUE) # This adds the selectize option to easily input sector\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository here. Follow me on medium and linkedIn to stay tuned for my next article."
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html",
+    "href": "tidytuesday/Birdfeeder/index.html",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "",
+    "text": "In this post, I will analyse the #TidyTuesday FeederWatch dataset about 30 Years of Standardized Bird Counts at Supplementary Feeding Stations in North America.\nFeederWatch is a place-based citizen science program that asks participants to identify and count the birds that visit the area around their home, particularly focused around supplementary feeding stations (i.e., bird feeders)."
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#load-libraries",
+    "href": "tidytuesday/Birdfeeder/index.html#load-libraries",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "\n1 Load libraries",
+    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\nlibrary(plotly)"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#load-data",
+    "href": "tidytuesday/Birdfeeder/index.html#load-data",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "\n2 Load data",
+    "text": "2 Load data\n\nbirdfeeder_checklist_2021 &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv')"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
+    "href": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "\n3 Top sighted bird data",
+    "text": "3 Top sighted bird data\n\ntop_sighted_bird &lt;- birdfeeder_checklist_2021 %&gt;% \n  group_by(species_code) %&gt;% \n  summarise(total_sightings = sum(how_many, na.rm = TRUE)) %&gt;% \n  ungroup() %&gt;% \n  arrange(desc(total_sightings)) %&gt;% \n  head(1) %&gt;%\n  pull(species_code)\n\n\nbirdfeeder_US_top &lt;- birdfeeder_checklist_2021 %&gt;% \n  filter(subnational1_code  %&gt;% str_detect(\"US-\")) %&gt;% \n  mutate(state_code = subnational1_code %&gt;% str_remove(\"US-\")) %&gt;% \n  select(latitude, longitude, state_code, species_code) %&gt;% \n  filter(species_code %in% top_sighted_bird)"
+  },
+  {
+    "objectID": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
+    "href": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
+    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "section": "\n4 Plot using Plotly",
+    "text": "4 Plot using Plotly\n\nbird_plot &lt;- plot_geo(birdfeeder_US_top,\n         lat = ~latitude,\n         lon = ~longitude,\n         # color = ~state_code,\n         marker = list(\n           size = 3, \n           opacity = 0.3,\n           color = \"yellow\"\n         ),\n         showlegend = FALSE\n) %&gt;% \n  add_trace(text = ~state_code,\n            hoverinfo = 'text') %&gt;% \n  layout(geo = list(\n    scope = 'usa'\n    , showland = TRUE\n    , showsubunits = FALSE\n    , landcolor = ('black')), \n    title = list(text = str_glue(\"Bird sightings across the US for {top_sighted_bird} \\n Nov, 2020 to Apr, 2021\"), y = 0.95, x = 0.5, xanchor = 'center', yanchor =  'top'),\n    subtitle = \"dd\",\n    font = list(size = 13, color = \"purple\")\n  ) %&gt;% \n  style(hoverlabel = list(font = list(size=20))) %&gt;% \n  # config(displayModeBar = FALSE) %&gt;%\n  # add_annotations(x = 0.75, y=0.66, text = str_glue(\"Highest sightings\\nPA\"), ax = 5, ay = -80, font = list(size = 14)) %&gt;% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.08,\n    text = str_glue(\"Data source: FeederWatch\"),\n    font = list(color = '#949494',\n                size = 14)\n  ) %&gt;% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.005,\n    text = str_glue(\"FeederWatch is a place-based citizen science program that asks participants \\nto identify and count the birds that visit the area around their home.    \"),\n    font = list(color = '#949494',\n                size = 12)\n  )\n\nbird_plot"
   },
   {
     "objectID": "index.html",
@@ -14,8 +98,22 @@
     "text": "I am a Sr. Data Scientist at Microsoft. I have extensive background working with varied data sets and using advanced analytics to enable business stakeholders to make informed decisions.\nI recently expanded my skill set to include topics like Quarto, tidymodels, working in cross-language R/Python environment using Reticulate, and data visualizations using animation and interactivity. I am passionate about Diversity, Equity and Inclusion and lead actionable initiatives and conversations to drive inclusiveness within our organization."
   },
   {
+    "objectID": "github.html",
+    "href": "github.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "Quarto code to reproduce this portfolio website - Portfolio git repo\nPrimary github account\nRepos to content within “Blogs and Dashboards tab:\n\nQuarto blog - Data visualizations - Animation and Interactivity\nShiny Flex Dashboard - Sales forecasting and anomaly detection\n\nMedium blog - Moving from interesting to actionable analysis"
+  },
+  {
     "objectID": "projects.html",
     "href": "projects.html",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "The GBIF Data Explorer is a web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.\nThe app is built using the Shiny package for R. It includes several visualizations and filters created using the following packages: DT, shiny, shinyWidgets, shinythemes, shinyjs, bslib, bsicons, lubridate, leaflet, highcharter…. Check out the shiny dashboard"
+  },
+  {
+    "objectID": "projects.html#global-biodiversity-shiny-dashboard-for-poland",
+    "href": "projects.html#global-biodiversity-shiny-dashboard-for-poland",
     "title": "Deepsha Menghani",
     "section": "",
     "text": "The GBIF Data Explorer is a web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.\nThe app is built using the Shiny package for R. It includes several visualizations and filters created using the following packages: DT, shiny, shinyWidgets, shinythemes, shinyjs, bslib, bsicons, lubridate, leaflet, highcharter…. Check out the shiny dashboard"
@@ -49,39 +147,18 @@
     "text": "Learn how you can easily create a Data Science Portfolio website and deploy it instantly with the help of Quarto. See how you can also easily maintain and update it whenever there are new projects that you want to showcase in your portfolio.\n\n\n\n\n\n\n\nThis is an interactive R Shiny app that generates a report on sales data for a selected product including product sales over time, key performance indicators, forecasting, and anomaly detection. It was showcased in Appsilon Shiny Conference 2023 App Gallery."
   },
   {
-    "objectID": "tidytuesday/Birdfeeder/index.html",
-    "href": "tidytuesday/Birdfeeder/index.html",
-    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
+    "objectID": "talks.html#posit-meetup-create-your-data-science-portfolio-with-quarto",
+    "href": "talks.html#posit-meetup-create-your-data-science-portfolio-with-quarto",
+    "title": "Deepsha Menghani",
     "section": "",
-    "text": "In this post, I will analyse the #TidyTuesday FeederWatch dataset about 30 Years of Standardized Bird Counts at Supplementary Feeding Stations in North America.\nFeederWatch is a place-based citizen science program that asks participants to identify and count the birds that visit the area around their home, particularly focused around supplementary feeding stations (i.e., bird feeders)."
+    "text": "Learn how you can easily create a Data Science Portfolio website and deploy it instantly with the help of Quarto. See how you can also easily maintain and update it whenever there are new projects that you want to showcase in your portfolio."
   },
   {
-    "objectID": "tidytuesday/Birdfeeder/index.html#load-libraries",
-    "href": "tidytuesday/Birdfeeder/index.html#load-libraries",
-    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
-    "section": "\n1 Load libraries",
-    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\nlibrary(plotly)"
-  },
-  {
-    "objectID": "tidytuesday/Birdfeeder/index.html#load-data",
-    "href": "tidytuesday/Birdfeeder/index.html#load-data",
-    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
-    "section": "\n2 Load data",
-    "text": "2 Load data\n\nbirdfeeder_checklist_2021 <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv')"
-  },
-  {
-    "objectID": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
-    "href": "tidytuesday/Birdfeeder/index.html#top-sighted-bird-data",
-    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
-    "section": "\n3 Top sighted bird data",
-    "text": "3 Top sighted bird data\n\ntop_sighted_bird <- birdfeeder_checklist_2021 %>% \n  group_by(species_code) %>% \n  summarise(total_sightings = sum(how_many, na.rm = TRUE)) %>% \n  ungroup() %>% \n  arrange(desc(total_sightings)) %>% \n  head(1) %>%\n  pull(species_code)\n\n\nbirdfeeder_US_top <- birdfeeder_checklist_2021 %>% \n  filter(subnational1_code  %>% str_detect(\"US-\")) %>% \n  mutate(state_code = subnational1_code %>% str_remove(\"US-\")) %>% \n  select(latitude, longitude, state_code, species_code) %>% \n  filter(species_code %in% top_sighted_bird)"
-  },
-  {
-    "objectID": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
-    "href": "tidytuesday/Birdfeeder/index.html#plot-using-plotly",
-    "title": "Tidy Tuesday: Analyzing FeederWatch dataset with Plotly in R",
-    "section": "\n4 Plot using Plotly",
-    "text": "4 Plot using Plotly\n\nbird_plot <- plot_geo(birdfeeder_US_top,\n         lat = ~latitude,\n         lon = ~longitude,\n         # color = ~state_code,\n         marker = list(\n           size = 3, \n           opacity = 0.3,\n           color = \"yellow\"\n         ),\n         showlegend = FALSE\n) %>% \n  add_trace(text = ~state_code,\n            hoverinfo = 'text') %>% \n  layout(geo = list(\n    scope = 'usa'\n    , showland = TRUE\n    , showsubunits = FALSE\n    , landcolor = ('black')), \n    title = list(text = str_glue(\"Bird sightings across the US for {top_sighted_bird} \\n Nov, 2020 to Apr, 2021\"), y = 0.95, x = 0.5, xanchor = 'center', yanchor =  'top'),\n    subtitle = \"dd\",\n    font = list(size = 13, color = \"purple\")\n  ) %>% \n  style(hoverlabel = list(font = list(size=20))) %>% \n  # config(displayModeBar = FALSE) %>%\n  # add_annotations(x = 0.75, y=0.66, text = str_glue(\"Highest sightings\\nPA\"), ax = 5, ay = -80, font = list(size = 14)) %>% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.08,\n    text = str_glue(\"Data source: FeederWatch\"),\n    font = list(color = '#949494',\n                size = 14)\n  ) %>% \n  add_annotations(\n    showarrow = F,\n    x = 0.1,\n    y=0.005,\n    text = str_glue(\"FeederWatch is a place-based citizen science program that asks participants \\nto identify and count the birds that visit the area around their home.    \"),\n    font = list(color = '#949494',\n                size = 12)\n  )\n\nbird_plot"
+    "objectID": "talks.html#appsilon-shiny-conference-sales-anomalies-and-forecast-report",
+    "href": "talks.html#appsilon-shiny-conference-sales-anomalies-and-forecast-report",
+    "title": "Deepsha Menghani",
+    "section": "",
+    "text": "This is an interactive R Shiny app that generates a report on sales data for a selected product including product sales over time, key performance indicators, forecasting, and anomaly detection. It was showcased in Appsilon Shiny Conference 2023 App Gallery."
   },
   {
     "objectID": "tidytuesday/gganimate/index.html",
@@ -102,84 +179,42 @@
     "href": "tidytuesday/gganimate/index.html#load-data",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n2 Load data",
-    "text": "2 Load data\nI am using the “babynames” dataset from the “Babynames” package.\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   <dbl> <chr> <chr>     <int>  <dbl>\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# … with 1,924,655 more rows\n\n\n\ndatatable(babynames %>% \n  head())"
+    "text": "2 Load data\nI am using the “babynames” dataset from the “Babynames” package.\n\nbabynames\n\n# A tibble: 1,924,665 × 5\n    year sex   name          n   prop\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1  1880 F     Mary       7065 0.0724\n 2  1880 F     Anna       2604 0.0267\n 3  1880 F     Emma       2003 0.0205\n 4  1880 F     Elizabeth  1939 0.0199\n 5  1880 F     Minnie     1746 0.0179\n 6  1880 F     Margaret   1578 0.0162\n 7  1880 F     Ida        1472 0.0151\n 8  1880 F     Alice      1414 0.0145\n 9  1880 F     Bertha     1320 0.0135\n10  1880 F     Sarah      1288 0.0132\n# … with 1,924,655 more rows\n\n\n\ndatatable(babynames %&gt;% \n  head())"
   },
   {
     "objectID": "tidytuesday/gganimate/index.html#clean-and-rank-the-data",
     "href": "tidytuesday/gganimate/index.html#clean-and-rank-the-data",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n3 Clean and rank the data",
-    "text": "3 Clean and rank the data\n\nranked_by_year <- babynames %>% \n  mutate(prop = round(prop*100, 2)) %>% \n  select(sex, year, name, var = prop) %>% \n  group_by(sex, year) %>% \n  arrange(year, -var) %>% \n  mutate(rank = 1:n()) %>% \n  filter(rank <= 10)"
+    "text": "3 Clean and rank the data\n\nranked_by_year &lt;- babynames %&gt;% \n  mutate(prop = round(prop*100, 2)) %&gt;% \n  select(sex, year, name, var = prop) %&gt;% \n  group_by(sex, year) %&gt;% \n  arrange(year, -var) %&gt;% \n  mutate(rank = 1:n()) %&gt;% \n  filter(rank &lt;= 10)"
   },
   {
     "objectID": "tidytuesday/gganimate/index.html#function-to-filter-the-data",
     "href": "tidytuesday/gganimate/index.html#function-to-filter-the-data",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n4 Function to filter the data",
-    "text": "4 Function to filter the data\n\ndata_filter <- function(ranked_by_year, sex_filter = \"M\", year_min = 1998) {\n  ranked_by_year %>% \n    filter(sex == sex_filter,\n           year >= year_min)\n}"
+    "text": "4 Function to filter the data\n\ndata_filter &lt;- function(ranked_by_year, sex_filter = \"M\", year_min = 1998) {\n  ranked_by_year %&gt;% \n    filter(sex == sex_filter,\n           year &gt;= year_min)\n}"
   },
   {
     "objectID": "tidytuesday/gganimate/index.html#function-to-create-the-ggplot-for-filtered-variables",
     "href": "tidytuesday/gganimate/index.html#function-to-create-the-ggplot-for-filtered-variables",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n5 Function to create the ggplot for filtered variables",
-    "text": "5 Function to create the ggplot for filtered variables\n\nplot_rect_function <- function(data, title_text) {\n  data %>% \n    ggplot() +\n    aes(xmin = 0,\n        xmax = var) +\n    aes(ymin = rank - 0.5,\n        ymax = rank + 0.5,\n        y = rank) +\n    theme_minimal() +\n    facet_wrap(~ year) +\n    geom_rect(alpha = 0.3, color = \"black\") +\n    aes(fill = name) +\n    scale_x_continuous(\n      limits = c(-2, 1.4)\n    ) +\n    geom_label(col = \"gray12\",\n              hjust = \"right\",\n              aes(label = name, fill = name),\n              x = -0.2) +\n    scale_y_reverse() +\n    labs(fill = NULL) +\n    labs(title = title_text,\n         y = \"\",\n         x = \"Percentage of names\") +\n    facet_null() +\n    scale_x_continuous(\n      limits =c(-0.7, 2)\n    ) +\n    geom_text(x = 1.6 , y = -10,\n              family = \"Times\",\n              aes(label = as.character(year)),\n              size = 20, col = \"grey18\") +\n    aes(group = name) +\n    theme(legend.position = \"none\",\n          axis.text.y = element_blank()) \n}"
+    "text": "5 Function to create the ggplot for filtered variables\n\nplot_rect_function &lt;- function(data, title_text) {\n  data %&gt;% \n    ggplot() +\n    aes(xmin = 0,\n        xmax = var) +\n    aes(ymin = rank - 0.5,\n        ymax = rank + 0.5,\n        y = rank) +\n    theme_minimal() +\n    facet_wrap(~ year) +\n    geom_rect(alpha = 0.3, color = \"black\") +\n    aes(fill = name) +\n    scale_x_continuous(\n      limits = c(-2, 1.4)\n    ) +\n    geom_label(col = \"gray12\",\n              hjust = \"right\",\n              aes(label = name, fill = name),\n              x = -0.2) +\n    scale_y_reverse() +\n    labs(fill = NULL) +\n    labs(title = title_text,\n         y = \"\",\n         x = \"Percentage of names\") +\n    facet_null() +\n    scale_x_continuous(\n      limits =c(-0.7, 2)\n    ) +\n    geom_text(x = 1.6 , y = -10,\n              family = \"Times\",\n              aes(label = as.character(year)),\n              size = 20, col = \"grey18\") +\n    aes(group = name) +\n    theme(legend.position = \"none\",\n          axis.text.y = element_blank()) \n}"
   },
   {
     "objectID": "tidytuesday/gganimate/index.html#create-plots-for-filtered-male-and-female-names",
     "href": "tidytuesday/gganimate/index.html#create-plots-for-filtered-male-and-female-names",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n6 Create plots for filtered Male and Female names",
-    "text": "6 Create plots for filtered Male and Female names\n\nplot_rect_M <- ranked_by_year %>% \n  data_filter(\"M\", 1998) %>% \n  plot_rect_function(title_text = \"Most popular male baby names between 1998-2017\")\n\nplot_rect_F <- ranked_by_year %>% \n  data_filter(\"F\", 1998) %>% \n  plot_rect_function(title_text = \"Most popular female baby names between 1998-2017\")"
+    "text": "6 Create plots for filtered Male and Female names\n\nplot_rect_M &lt;- ranked_by_year %&gt;% \n  data_filter(\"M\", 1998) %&gt;% \n  plot_rect_function(title_text = \"Most popular male baby names between 1998-2017\")\n\nplot_rect_F &lt;- ranked_by_year %&gt;% \n  data_filter(\"F\", 1998) %&gt;% \n  plot_rect_function(title_text = \"Most popular female baby names between 1998-2017\")"
   },
   {
     "objectID": "tidytuesday/gganimate/index.html#animate-with-gganimate-over-time",
     "href": "tidytuesday/gganimate/index.html#animate-with-gganimate-over-time",
     "title": "Animated visualization of popular names using GGAnimate",
     "section": "\n7 Animate with GGAnimate over time",
-    "text": "7 Animate with GGAnimate over time\nWhile the above plot looks extremely scrambled, applying gganimate and looking at it over time will clean it up.\n\n7.1 Male names between 1998 and 2017\nThe name “Jacob” went from rank 1 to rank 10 by 2017 but stayed on the charts throughout!\n\nnames_prop_animated_M <- plot_rect_M  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_M, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Male.gif\")\n\n\n\n7.2 Female names between 1998 and 2017\nThe name “Emily” went from rank 1 to not surviving the top 10 chart by 2017.\n\nnames_prop_animated_F <- plot_rect_F  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_F, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Female.gif\")"
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html",
-    "href": "tidytuesday/plotly/index.html",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "",
-    "text": "In this post, I will analyse the #TidyTuesday dataset about Retail Sales in the US across all States between 2019 and 2022.\nThe data comes from the United States Census Bureau’s Monthly State Retail Sales. The Monthly State Retail Sales (MSRS) is the Census Bureau’s new experimental data product featuring modeled state-level retail sales. You can find the dataset on Tidy Tuesday here."
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html#load-libraries",
-    "href": "tidytuesday/plotly/index.html#load-libraries",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "\n1 Load libraries",
-    "text": "1 Load libraries\n\n# For loading Tidy Tuesday data\nlibrary(tidytuesdayR)\n\n# EDA\nlibrary(tidyverse)\nlibrary(DT)\n\n# Interactive visualization\nlibrary(plotly)\nlibrary(crosstalk)"
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html#load-data",
-    "href": "tidytuesday/plotly/index.html#load-data",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "\n2 Load data",
-    "text": "2 Load data\n\n# Get the Data\n\n# Read in with tidytuesdayR package \n# Install from CRAN via: install.packages(\"tidytuesdayR\")\n\nstate_retail <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/state_retail.csv',  col_types = \"cciciiccc\")\ncoverage_codes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-13/coverage_codes.csv')\n\n\ndatatable(state_retail %>% filter(state_abbr == \"WA\") %>% \n  select(state_abbr, year, month, subsector, change_yoy))"
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
-    "href": "tidytuesday/plotly/index.html#impute-and-clean-the-data-for-washington",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "\n3 Impute and clean the data for Washington",
-    "text": "3 Impute and clean the data for Washington\nAfter filtering data for Washington, I use the tidyr fill function to impute missing data within each subsector with the next complete value. While there are many ways of imputing the data, I chose this method to indicate that change is more likely to be tending towards the next available value of change.\nYou may choose not to impute the data as well or use other methods like average.\n\nstate_data_imputed <-  state_retail %>% \n  filter(state_abbr == 'WA') %>%\n  arrange(subsector) %>% \n  select(state_abbr, year, month, subsector, change_yoy) %>% \n  mutate(change_yoy = as.numeric(change_yoy %>% str_remove('S'))) %>% \n  group_by(subsector) %>% \n  fill(change_yoy, .direction = \"up\") %>% #Replace missing data with next good value within the group\n  ungroup() %>% \n  mutate(date = ifelse(month < 10, paste0(year,'-0',month, '-01'), paste0(year,'-',month, '-01'))) %>% # Create a readable date column\n  select(state_abbr, subsector, date, change_yoy)\n\ndatatable(state_data_imputed)"
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
-    "href": "tidytuesday/plotly/index.html#plot-using-plotly-to-have-date-range-interactivity",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "\n4 Plot using “Plotly” to have date range interactivity",
-    "text": "4 Plot using “Plotly” to have date range interactivity\nI use Plotly here to add the interactivity of zooming to a certain time range.\n\nstate_data_imputed %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T),\n                      zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750, height = 450)"
-  },
-  {
-    "objectID": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
-    "href": "tidytuesday/plotly/index.html#use-crosstalk-with-plotly-to-enable-selecting-highlighting-and-focusing",
-    "title": "Retail Sales data analysis with interactive plots using Plotly",
-    "section": "\n5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing",
-    "text": "5 Use “Crosstalk” with Plotly to enable selecting, highlighting and focusing\nAs there are so many retail sectors, Crosstalk allows me to add a component where I can highlight one or more sectors making it easier to compare.\n\n## Create a crosstalk component\nsector_data <- SharedData$new(state_data_imputed, key = ~subsector, group = \"Select a Retail Sector\")\n\n# Plot similar to the previous plotly function but add a highlight command\nsector_data %>% \n  plot_ly( type = 'scatter', mode = 'lines') %>%\n  add_trace(x = ~date, y = ~change_yoy, color = ~subsector,\n    hoverinfo = \"text\", text = ~paste0(subsector,\"\\n\",date,\"\\n\",change_yoy)) %>%\n  layout(showlegend = F, title='Washington Retail Sales delta YoY',\n         xaxis = list(rangeslider = list(visible = T))) %>%\n  layout(\n         xaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = ''),\n         yaxis = list(zerolinecolor = '#ffff',\n                      zerolinewidth = 2,\n                      gridcolor = 'ffff',\n                      title = 'Change YoY',\n                      range=list(-150, 500)),\n         plot_bgcolor='#e5ecf6', width = 750) %>%\n  highlight(selectize = TRUE, persistent = TRUE) # This adds the selectize option to easily input sector\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository here. Follow me on medium and linkedIn to stay tuned for my next article."
+    "text": "7 Animate with GGAnimate over time\nWhile the above plot looks extremely scrambled, applying gganimate and looking at it over time will clean it up.\n\n7.1 Male names between 1998 and 2017\nThe name “Jacob” went from rank 1 to rank 10 by 2017 but stayed on the charts throughout!\n\nnames_prop_animated_M &lt;- plot_rect_M  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_M, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Male.gif\")\n\n\n\n7.2 Female names between 1998 and 2017\nThe name “Emily” went from rank 1 to not surviving the top 10 chart by 2017.\n\nnames_prop_animated_F &lt;- plot_rect_F  +\n  gganimate::transition_time(year)\n\nanimate(names_prop_animated_F, duration =30, fps = 10, width = 900, height = 600, renderer = gifski_renderer(), end_pause = 100, start_pause = 30)\n\nanim_save(file = \"popular_names_Female.gif\")"
   },
   {
     "objectID": "tidytuesday.html",
@@ -189,17 +224,17 @@
     "text": "#TidyTuesday is a weekly data project aimed at the R ecosystem. This project was borne out of the R4DS Online Learning Community and the R for Data Science textbook. Emphasis is placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome.\nWhile I regularly participate in weekly Tidy Tuesday, these posts highlight my favorite submissions and the corresponding code.\n\n\n\n\n\n\nTip\n\n\n\nYou can find my github code repository for Tidy Tuesday submissions here.\n\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday: Analyzing FeederWatch dataset with Plotly in R\n\n\n\n\n\n\n\ncode\n\n\nspatial\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nAnimated visualization of popular names using GGAnimate\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\ngganimate\n\n\n\n\n\n\n\n\n\n\n\nJan 3, 2023\n\n\nDeepsha Menghani\n\n\n\n\n\n\n  \n\n\n\n\nRetail Sales data analysis with interactive plots using Plotly\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\nvisualization\n\n\nplotly\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nDeepsha Menghani\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "waresume.html",
-    "href": "waresume.html",
-    "title": "Wednesday Addams",
+    "objectID": "workshops.html",
+    "href": "workshops.html",
+    "title": "My invited talks and workshops",
     "section": "",
-    "text": "Note\n\n\n\nAs a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam’s resume here."
+    "text": "Global Biodiversity Shiny dashboard for Poland\n\n\nA Shiny web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database. categories…\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "waresume.html#sr.-data-journalist-nevermore-2022---present",
-    "href": "waresume.html#sr.-data-journalist-nevermore-2022---present",
-    "title": "Wednesday Addams",
-    "section": "Sr. Data Journalist, Nevermore (2022 - present)",
-    "text": "Sr. Data Journalist, Nevermore (2022 - present)\n\nIndependently analyzed student journeys among peers to create a classification model for identifying sketchy monster\nOptimized data gathering and research based on new and evolving constraints by the school principal and sheriff\nSuspected every stakeholder I came in contact with following “Trust but verify” data philosophy\nDeveloped AI based psychic visions in my head to create a propensity model for incident occurrence with 100% accuracy \nSuccessfully led a team of trusting peers multiple times to face dangers risen from bad data collection\nExpertly coded in multiple languages like Latin and German\nDeveloped algorithms using Natural Language Processing and Deep Learning models to communicate with dead and alive stakeholders"
+    "objectID": "workshops/gbif_shiny/index.html",
+    "href": "workshops/gbif_shiny/index.html",
+    "title": "Global Biodiversity Shiny dashboard for Poland",
+    "section": "",
+    "text": "An interactive map made with the leaflet R package.\n\n\nAbstract\nThe GBIF Data Explorer is a web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.\nThe app is built using the Shiny package for R. It includes several visualizations and filters created using the following packages: DT, shiny, shinyWidgets, shinythemes, shinyjs, bslib, bsicons, lubridate, leaflet, highcharter…. Check out the shiny dashboard"
   }
 ]

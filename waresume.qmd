@@ -17,8 +17,7 @@ knitr::opts_chunk$set(
 As a huge Wednesday fan, after finishing the season I created a Data Science resume for her during the wee hours of midnight! You can find my github code repository for Wednesday Addam's resume [here](https://github.com/deepshamenghani/Wednesday_Addams_resume_quarto/).
 :::
 
-
-# Education 
+# Education
 
 Nevermore Academy, Jericho - present
 
@@ -70,7 +69,6 @@ ggdraw() +
 
 ```
 
-
 # Experience
 
 ## Sr. Data Journalist, Nevermore (2022 - present)
@@ -83,7 +81,6 @@ ggdraw() +
 -   Expertly coded in multiple languages like Latin and German
 -   Developed algorithms using Natural Language Processing and Deep Learning models to communicate with dead and alive stakeholders
 
-
 # Hobbies
 
 -   Dancing like nobody is watching
@@ -95,10 +92,6 @@ ggdraw() +
 ![Screenshot from Netflix](WA_screenshot_smile.png)
 
 # About this resume
+
 -   Created by [Deepsha Menghani](https://deepshamenghani.quarto.pub/dmenghani/)
 -   Packages used: Quarto, Tidyverse, gtrendsR, showtext, ggthemes, cowplot, magick, ggimage
-
-
-
-
-

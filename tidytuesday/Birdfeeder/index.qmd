@@ -12,7 +12,7 @@ format:
     code-tools: true
     toc: false
     number-sections: true
-link-citations: yes
+link-citations: true
 categories: [code, spatial, visualization, plotly]
 image: "birdsightings_daejun.png"
 ---

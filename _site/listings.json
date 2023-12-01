@@ -6,5 +6,11 @@
       "/tidytuesday/gganimate/index.html",
       "/tidytuesday/plotly/index.html"
     ]
+  },
+  {
+    "listing": "/workshops.html",
+    "items": [
+      "/workshops/gbif_shiny/index.html"
+    ]
   }
 ]

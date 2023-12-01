@@ -1,0 +1,27 @@
+---
+title: "Global Biodiversity Shiny dashboard for Poland"
+description: |
+  A Shiny web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.
+  categories: [SHINY, R, LEAFLET, HIGHCHARTER]
+image: gbif_shiny.gif
+---
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-alt: "Interation with the Shiny dashboard."
+knitr::include_graphics("gbif_shiny.gif")
+```
+
+::: {.black-italic .center-text}
+An interactive map made with the `{leaflet}` R package.
+:::
+
+<br>
+
+# Abstract 
+
+The GBIF Data Explorer is a web application that allows users to explore and analyze biodiversity data for Poland from the Global Biodiversity Information Facility (GBIF) database.
+
+The app is built using the Shiny package for R. It includes several visualizations and filters created using the following packages: DT, shiny, shinyWidgets, shinythemes, shinyjs, bslib, bsicons, lubridate, leaflet, highcharter.... [Check out the shiny dashboard](https://hzon6a-deepsha-menghani.shinyapps.io/biodiversity_shiny_dashboard/){target="_blank"}
+

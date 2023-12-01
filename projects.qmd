@@ -32,8 +32,6 @@ My teammate and I participated in Microsoft hackathon where we accessed data fro
 :::
 :::
 
-
-
 ## Data visualizations - Animation and Interactivity using Gganimate and Plotly
 
 ::: columns
@@ -71,16 +69,23 @@ Giving your stakeholders the ability to play with product grain forecast and ano
 <!-- ## Medium blog - Moving from interesting to actionable analysis -->
 
 <!-- ::: columns -->
+
 <!-- ::: {.column width="55%"} -->
+
 <!-- No actions were taken from the insights you produced, and there was no impact on the business. Your beautiful analysis went on to sit in a folder unseen by anybody ever again. Let's name this folder "the analysis morgue." It contains more moribund analyses than it ought to because this scenario represents a common problem with data analytics teams, and by experiencing it you are not alone. -->
 
 <!-- But there are ways to avoid it.... [Continue reading](https://medium.com/p/5d62c929a36c){target="_blank"} -->
+
 <!-- ::: -->
 
 <!-- ::: {.column width="5%"} -->
+
 <!-- ::: -->
 
 <!-- ::: {.column width="40%"} -->
+
 <!-- ![](images/clusters.png) -->
+
 <!-- ::: -->
+
 <!-- ::: -->
